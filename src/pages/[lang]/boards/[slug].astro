@@ -35,8 +35,8 @@ const related = allBoards
 <Layout lang={typedLang} pagePath={`/boards/${slug}`} title={data.name} description={`SPREAD SNOWBOARDS ${data.name}. ${data.design}.`}>
   <article class="detail">
     <div class="breadcrumb">
-      <a href={`/${lang}`}>HOME</a><span>/</span>
-      <a href={`/${lang}/boards`}>BOARDS</a><span>/</span>
+      <a href={`${b}/${lang}`}>HOME</a><span>/</span>
+      <a href={`${b}/${lang}/boards`}>BOARDS</a><span>/</span>
       <span class="current">{data.name}</span>
     </div>
 
@@ -108,11 +108,11 @@ const related = allBoards
       <div class="related-section">
         <h2 class="related-title">{data.series} SERIES — {t(typedLang, 'detail_other')}</h2>
         <div class="related-grid">
-          {related.map(b => (
-            <a href={`/${lang}/boards/${b.id}`} class="related-card">
-              <p class="related-series">{b.data.series}</p>
-              <p class="related-name">{b.data.name}</p>
-              <p class="related-design">{b.data.design}</p>
+          {related.map(r => (
+            <a href={`${b}/${lang}/boards/${r.id}`} class="related-card">
+              <p class="related-series">{r.data.series}</p>
+              <p class="related-name">{r.data.name}</p>
+              <p class="related-design">{r.data.design}</p>
             </a>
           ))}
         </div>
@@ -120,7 +120,7 @@ const related = allBoards
     )}
 
     <div class="nav-back">
-      <a href={`/${lang}/boards`} class="back-link">
+      <a href={`${b}/${lang}/boards`} class="back-link">
         <svg width="14" height="14" viewBox="0 0 14 14" fill="none"><path d="M12 7H2M6 3L2 7L6 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <span>ALL BOARDS</span>
       </a>

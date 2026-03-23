@@ -8,6 +8,7 @@ export function getStaticPaths() {
 }
 
 const lang = Astro.params.lang as Lang;
+const b = import.meta.env.BASE_URL.replace(/\/$/, "");
 ---
 
 <Layout lang={lang} pagePath="/shop" title={t(lang, 'shop_title')} description={t(lang, 'shop_sub')}>
@@ -33,7 +34,7 @@ const lang = Astro.params.lang as Lang;
       </div>
       <h2 class="overseas-status">{t(lang, 'shop_overseas_status')}</h2>
       <p class="overseas-desc">{t(lang, 'shop_overseas_desc')}</p>
-      <a href={`/${lang}/contact`} class="overseas-btn">CONTACT</a>
+      <a href={`${b}/${lang}/contact`} class="overseas-btn">CONTACT</a>
     </div>
   </section>
 

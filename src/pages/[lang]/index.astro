@@ -35,13 +35,13 @@ const featured = allBoards
       <div class="sub-hero-text">
         <p class="hero-season">{t(lang, 'season')}</p>
         <div class="hero-actions">
-          <a href={`/${lang}/boards`} class="btn-primary">
+          <a href={`${b}/${lang}/boards`} class="btn-primary">
             <span>BOARDS 2026/27</span>
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
               <path d="M2 7H12M8 3L12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </a>
-          <a href={`/${lang}/contact`} class="btn-outline">CONTACT</a>
+          <a href={`${b}/${lang}/contact`} class="btn-outline">CONTACT</a>
         </div>
       </div>
       <div class="hero-stats">
@@ -80,7 +80,7 @@ const featured = allBoards
           { series: 'RD SERIES', desc: t(lang, 'series_rd'), models: 'RD / RD CV' },
           { series: 'SPECIAL', desc: t(lang, 'series_special'), models: 'DX / ZERO' },
         ].map(({ series, desc, models }) => (
-          <a href={`/${lang}/boards`} class="series-card">
+          <a href={`${b}/${lang}/boards`} class="series-card">
             <p class="series-name">{series}</p>
             <p class="series-desc">{desc}</p>
             <p class="series-models">{models}</p>
@@ -97,7 +97,7 @@ const featured = allBoards
           <p class="sec-tag">{t(lang, 'lineup_tag')}</p>
           <h2 class="featured-title">2026/27 BOARDS</h2>
         </div>
-        <a href={`/${lang}/boards`} class="view-all">
+        <a href={`${b}/${lang}/boards`} class="view-all">
           <span>{t(lang, 'all_boards')}</span>
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
             <path d="M2 6H10M7 3L10 6L7 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -107,7 +107,7 @@ const featured = allBoards
 
       <div class="board-grid">
         {featured.map(board => (
-          <a href={`/${lang}/boards/${board.id}`} class="board-card">
+          <a href={`${b}/${lang}/boards/${board.id}`} class="board-card">
             <div class="board-img-wrap">
               {board.data.topImage && (
                 <img src={`${b}${board.data.topImage}`} alt={board.data.name} loading="lazy" />
