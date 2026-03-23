@@ -11,6 +11,24 @@ const featured = allBoards
 
 <Layout lang="ja" pagePath="/">
 
+<script define:vars={{ b }}>
+  (function() {
+    if (sessionStorage.getItem('lang-redirected')) return;
+    sessionStorage.setItem('lang-redirected', '1');
+
+    const supported = { en: 'en', zh: 'zh', ko: 'ko', de: 'de', fr: 'fr', es: 'es', it: 'it', ru: 'ru' };
+    const browserLang = (navigator.language || '').toLowerCase();
+    const short = browserLang.split('-')[0];
+
+    if (short === 'ja') return;
+
+    const match = supported[short];
+    if (match) {
+      window.location.replace(b + '/' + match + '/');
+    }
+  })();
+</script>
+
 
   <!-- Hero (Crooja-style 3-image gallery) -->
   <section class="hero">
