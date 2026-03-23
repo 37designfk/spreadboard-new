@@ -1,0 +1,44 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-red: #cc0000;
+  --color-brand-dark: #111111;
+  --color-brand-gray: #999999;
+}
+
+html {
+  background-color: #ffffff;
+  color: #111111;
+  font-family: "ヒラギノ角ゴ ProN", "Hiragino Kaku Gothic ProN", "游ゴシック体", "Yu Gothic", YuGothic, system-ui, -apple-system, sans-serif;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+}
+
+body {
+  background-color: #ffffff;
+  color: #111111;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+::-webkit-scrollbar-thumb {
+  background: #cccccc;
+  border-radius: 4px;
+}
+
+::selection {
+  background-color: #cc0000;
+  color: #fff;
+}
+
+a {
+  color: #111111;
+  transition: color 0.3s;
+}
+a:hover {
+  color: #cc0000;
+}

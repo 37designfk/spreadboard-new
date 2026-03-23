@@ -1,0 +1,19 @@
+{
+  "name": "BX-F",
+  "series": "X",
+  "quality": ["安定性", "操作性"],
+  "design": "SVC",
+  "flex": 2,
+  "description": "BXをベースに、ソフトなフレックスを採用することで軽量化を図り、スウィングウェイトが大きく軽減されたことにより、回転性能が大幅に向上したモデル。キャンバー形状が持つ反発力と安定性はしっかりと維持しつつ、自在な操作を可能にするしなやかさをプラスすることで、扱いやすく、繊細な動きにも素直に反応する高い操作性を実現している。ソフトフレックスによる足元の自由度の高さはグラトリとの相性が非常によく、プレス・バター・回し系などあらゆる技で抜群のパフォーマンスを発揮。軽快でリズムよく滑りたいライダーに最適な一本となっている。",
+  "topImage": "/boards/bx-f-top.jpg",
+  "baseImage": "/boards/bx-f-base.jpg",
+  "sortOrder": 5,
+  "sizes": [
+    { "size": 156, "waistWidth": 249, "effectiveEdge": 1240, "runningLength": 1200, "sidecutRadius": 8383, "stanceWidth": 580, "noseTailWidth": 292, "stanceLocation": 0 },
+    { "size": 154, "waistWidth": 247, "effectiveEdge": 1220, "runningLength": 1180, "sidecutRadius": 8299, "stanceWidth": 560, "noseTailWidth": 289, "stanceLocation": 0 },
+    { "size": 152, "waistWidth": 246, "effectiveEdge": 1200, "runningLength": 1160, "sidecutRadius": 8215, "stanceWidth": 540, "noseTailWidth": 287, "stanceLocation": 0 },
+    { "size": 150, "waistWidth": 245, "effectiveEdge": 1190, "runningLength": 1140, "sidecutRadius": 8133, "stanceWidth": 530, "noseTailWidth": 285, "stanceLocation": 0 },
+    { "size": 148, "waistWidth": 243, "effectiveEdge": 1160, "runningLength": 1120, "sidecutRadius": 8050, "stanceWidth": 520, "noseTailWidth": 282, "stanceLocation": 0 },
+    { "size": 145, "waistWidth": 242, "effectiveEdge": 1150, "runningLength": 1090, "sidecutRadius": 8051, "stanceWidth": 510, "noseTailWidth": 281, "stanceLocation": 0 }
+  ]
+}

@@ -1,0 +1,176 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout
+  lang="ja" pagePath="/contact" title="CONTACT"
+  description="SPREAD SNOWBOARDSへのお問い合わせ。製品についてのご質問、ご注文等はこちらから。"
+>
+  <section class="page-header">
+    <div class="page-header-inner">
+      <p class="page-label">GET IN TOUCH</p>
+      <h1 class="page-title">CONTACT</h1>
+    </div>
+  </section>
+
+  <div class="form-wrap">
+    <p class="form-intro">
+      製品についてのご質問、お取り扱いのご相談、その他お問い合わせは<br />
+      以下のフォームよりお気軽にご連絡ください。
+    </p>
+
+    <form name="contact" method="POST" data-netlify="true" class="contact-form">
+      <input type="hidden" name="form-name" value="contact" />
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">お名前 <span class="required">*</span></label>
+          <input type="text" name="name" required placeholder="山田 太郎" class="form-input" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">メールアドレス <span class="required">*</span></label>
+          <input type="email" name="email" required placeholder="your@email.com" class="form-input" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">件名</label>
+        <select name="subject" class="form-input form-select">
+          <option value="">選択してください</option>
+          <option value="product">製品について</option>
+          <option value="shop">取り扱い店舗について</option>
+          <option value="dealer">販売代理店について</option>
+          <option value="other">その他</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">メッセージ <span class="required">*</span></label>
+        <textarea name="message" required rows="6" placeholder="お問い合わせ内容をご記入ください" class="form-input form-textarea"></textarea>
+      </div>
+
+      <button type="submit" class="form-submit">
+        <span>SEND MESSAGE</span>
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M2 7H12M8 3L12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </form>
+  </div>
+</Layout>
+
+<style>
+  .page-header {
+    border-bottom: 1px solid #ebebeb;
+    padding: 3rem 1.5rem 2rem;
+  }
+  .page-header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .page-label {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #cc0000;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .page-title {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: 2px;
+    color: #111;
+  }
+
+  .form-wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 4rem 1.5rem;
+  }
+  .form-intro {
+    font-size: 13px;
+    color: rgba(0,0,0,0.6);
+    line-height: 2;
+    margin-bottom: 3rem;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .form-label {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: rgba(0,0,0,0.5);
+    text-transform: uppercase;
+  }
+  .required {
+    color: #cc0000;
+  }
+  .form-input {
+    width: 100%;
+    background: transparent;
+    border: 1px solid rgba(0,0,0,0.12);
+    color: #111;
+    font-size: 14px;
+    padding: 12px 16px;
+    font-family: inherit;
+    transition: border-color 0.2s;
+  }
+  .form-input:focus {
+    outline: none;
+    border-color: rgba(0,0,0,0.5);
+  }
+  .form-input::placeholder {
+    color: rgba(0,0,0,0.3);
+  }
+  .form-select {
+    background: #fff;
+    color: rgba(0,0,0,0.6);
+  }
+  .form-textarea {
+    resize: none;
+  }
+
+  .form-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    align-self: flex-start;
+    background: #111;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 13px 28px;
+    transition: background 0.2s;
+  }
+  .form-submit:hover {
+    background: #cc0000;
+  }
+
+  @media (max-width: 600px) {
+    .form-row {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

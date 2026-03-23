@@ -1,0 +1,19 @@
+{
+  "name": "RD CV",
+  "series": "RD",
+  "quality": ["反発性", "正確性", "操作性", "滑走性"],
+  "design": "CAMBER",
+  "flex": 4,
+  "description": "SPREADのアーキテクト菅谷佑之介が監修する、トリックとカービングに特化したシリーズ【RD】。対極するふたつのスタイルを高次元で両立させるため全長に対する有効エッジ率81%を基軸にした独自のラウンド形状を採用。雪面を素早く捉える応答性と、正確なエッジングを生む安定した操作性を実現している。シングルサイドカーブによる一貫したエッジコントロールはそのままに、菅谷が徹底的にブラッシュアップした最新アウトラインは、標準アウトラインを再定義(ReDefine)するにふさわしい完成度を備えている。【RD CVモデル】RDと同じ性能を持つカラーバリエーションモデル。S／Wの設定はありません。142cmはCVモデルのみの展開です。",
+  "designedBy": "菅谷佑之介",
+  "topImage": "/boards/rd-cv-top.jpg",
+  "baseImage": "/boards/rd-cv-base.jpg",
+  "sortOrder": 11,
+  "sizes": [
+    { "size": 152, "waistWidth": 250, "effectiveEdge": 1230, "runningLength": 1160, "sidecutRadius": 8420, "stanceWidth": 540, "noseTailWidth": 290, "stanceLocation": 0 },
+    { "size": 150, "waistWidth": 248, "effectiveEdge": 1210, "runningLength": 1140, "sidecutRadius": 6130, "stanceWidth": 530, "noseTailWidth": 288, "stanceLocation": 0 },
+    { "size": 148, "waistWidth": 248, "effectiveEdge": 1200, "runningLength": 1120, "sidecutRadius": 6260, "stanceWidth": 520, "noseTailWidth": 286, "stanceLocation": 0 },
+    { "size": 145, "waistWidth": 247, "effectiveEdge": 1180, "runningLength": 1100, "sidecutRadius": 6184, "stanceWidth": 510, "noseTailWidth": 284, "stanceLocation": 0 },
+    { "size": 142, "waistWidth": 246, "effectiveEdge": 1150, "runningLength": 1070, "sidecutRadius": 7958, "stanceWidth": 500, "noseTailWidth": 282, "stanceLocation": 0 }
+  ]
+}

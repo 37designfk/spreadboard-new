@@ -1,0 +1,98 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { foreignLangs, type Lang } from '../../i18n/config';
+import { t } from '../../i18n/utils';
+
+export function getStaticPaths() {
+  return foreignLangs.map(lang => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+---
+
+<Layout lang={lang} pagePath="/shop" title={t(lang, 'shop_title')} description={t(lang, 'shop_sub')}>
+
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="hero-label">{t(lang, 'shop_authorized')}</p>
+      <h1 class="hero-title">{t(lang, 'shop_title')}</h1>
+      <div class="hero-line"></div>
+      <p class="hero-sub">{t(lang, 'shop_sub')}</p>
+    </div>
+  </section>
+
+  <!-- Overseas: Coming Soon -->
+  <section class="overseas-section">
+    <div class="overseas-inner">
+      <div class="overseas-icon">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.5">
+          <circle cx="24" cy="24" r="20"/>
+          <ellipse cx="24" cy="24" rx="10" ry="20"/>
+          <path d="M4 24h40M6 14h36M6 34h36"/>
+        </svg>
+      </div>
+      <h2 class="overseas-status">{t(lang, 'shop_overseas_status')}</h2>
+      <p class="overseas-desc">{t(lang, 'shop_overseas_desc')}</p>
+      <a href={`/${lang}/contact`} class="overseas-btn">CONTACT</a>
+    </div>
+  </section>
+
+</Layout>
+
+<style>
+  .hero {
+    background: #fafafa;
+    padding: 5rem 1.5rem 3.5rem;
+    text-align: center;
+    border-bottom: 1px solid #ebebeb;
+  }
+  .hero-inner { max-width: 1200px; margin: 0 auto; }
+  .hero-label { font-family: system-ui, -apple-system, sans-serif; font-size: 10px; letter-spacing: 6px; color: #bbb; text-transform: uppercase; margin-bottom: 1rem; }
+  .hero-title { font-family: system-ui, -apple-system, sans-serif; font-size: clamp(36px, 8vw, 56px); font-weight: 900; font-style: italic; color: #111; letter-spacing: 12px; margin-bottom: 1.5rem; }
+  .hero-line { width: 36px; height: 2px; background: #cc0000; margin: 0 auto 1rem; }
+  .hero-sub { font-size: 12px; letter-spacing: 4px; color: #bbb; }
+
+  .overseas-section {
+    padding: 6rem 1.5rem;
+    text-align: center;
+  }
+  .overseas-inner {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  .overseas-icon {
+    color: rgba(0,0,0,0.15);
+    margin-bottom: 2rem;
+  }
+  .overseas-status {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 24px;
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: 4px;
+    color: #111;
+    margin-bottom: 1.5rem;
+  }
+  .overseas-desc {
+    font-size: 14px;
+    color: rgba(0,0,0,0.5);
+    line-height: 2;
+    margin-bottom: 2.5rem;
+  }
+  .overseas-btn {
+    display: inline-block;
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: #cc0000;
+    border: 1px solid #cc0000;
+    padding: 12px 40px;
+    text-decoration: none;
+    transition: background 0.3s, color 0.3s;
+  }
+  .overseas-btn:hover {
+    background: #cc0000;
+    color: #fff;
+  }
+</style>

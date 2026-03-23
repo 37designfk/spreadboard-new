@@ -1,0 +1,20 @@
+{
+  "name": "ZERO",
+  "series": "ZERO",
+  "quality": ["操作性", "正確性"],
+  "design": "CAMBER",
+  "flex": 3,
+  "description": "堀内礼監修モデル。LTA-Fをベースに有効エッジを延長し、フレックスバランスを最適化することで、トリックにおけるスピン性能をより高い次元へ引き上げたモデル。エッジの安定感が増し、回転の初動が軽くスムーズになるため、多方向への動きに対して素直に反応し、精度の高いトリックを可能にする。また、驚異的なスウィングウェイトの軽量化を達成したことで、振り回しや切り返しがより軽快になり、従来モデルが持つフィーリングを残しながら動きの幅を大きく拡張。グラトリから地形遊びまで、ライダーの表現力を最大限に引き出す仕上がりとなっている。",
+  "designedBy": "堀内礼",
+  "topImage": "/boards/zero-top.jpg",
+  "baseImage": "/boards/zero-base.jpg",
+  "sortOrder": 9,
+  "sizes": [
+    { "size": 156, "waistWidth": 249, "effectiveEdge": 1240, "runningLength": 1200, "sidecutRadius": 8383, "stanceWidth": 580, "noseTailWidth": 292, "stanceLocation": 0 },
+    { "size": 154, "waistWidth": 247, "effectiveEdge": 1220, "runningLength": 1180, "sidecutRadius": 8299, "stanceWidth": 560, "noseTailWidth": 289, "stanceLocation": 0 },
+    { "size": 152, "waistWidth": 246, "effectiveEdge": 1200, "runningLength": 1160, "sidecutRadius": 8215, "stanceWidth": 540, "noseTailWidth": 287, "stanceLocation": 0 },
+    { "size": 150, "waistWidth": 245, "effectiveEdge": 1190, "runningLength": 1140, "sidecutRadius": 8133, "stanceWidth": 530, "noseTailWidth": 285, "stanceLocation": 0 },
+    { "size": 148, "waistWidth": 243, "effectiveEdge": 1160, "runningLength": 1120, "sidecutRadius": 8050, "stanceWidth": 520, "noseTailWidth": 282, "stanceLocation": 0 },
+    { "size": 145, "waistWidth": 242, "effectiveEdge": 1150, "runningLength": 1090, "sidecutRadius": 8051, "stanceWidth": 510, "noseTailWidth": 281, "stanceLocation": 0 }
+  ]
+}

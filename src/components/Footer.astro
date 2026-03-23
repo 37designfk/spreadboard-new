@@ -1,0 +1,126 @@
+---
+import type { Lang } from '../i18n/config';
+import { t } from '../i18n/utils';
+
+interface Props {
+  lang?: Lang;
+}
+
+const { lang = 'ja' } = Astro.props;
+const year = new Date().getFullYear();
+const lp = lang === 'ja' ? '' : `/${lang}`;
+---
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href={`${lp}/` || '/'} class="footer-logo">
+          <img src="/images/logo-black.png" alt="SPREAD SNOWBOARDS" class="footer-logo-img" />
+        </a>
+        <p class="footer-desc">{t(lang, 'footer_desc')}</p>
+      </div>
+
+      <div class="footer-links">
+        <p class="footer-links-title">{t(lang, 'footer_nav')}</p>
+        <ul>
+          <li><a href={`${lp}/` || '/'}>HOME</a></li>
+          <li><a href={`${lp}/boards`}>{t(lang, 'nav_boards')}</a></li>
+          <li><a href={`${lp}/shop`}>{t(lang, 'nav_shop')}</a></li>
+          <li><a href={`${lp}/contact`}>{t(lang, 'nav_contact')}</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; {year} {t(lang, 'footer_rights')}</p>
+      <p>{t(lang, 'footer_made')}</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    border-top: 1px solid #e8e8e8;
+    margin-top: 6rem;
+  }
+  .footer-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem;
+  }
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+  .footer-brand {
+    max-width: 300px;
+  }
+  .footer-logo {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none;
+    margin-bottom: 1rem;
+  }
+  .footer-logo-img {
+    height: 22px;
+    width: auto;
+    opacity: 0.5;
+  }
+  .footer-desc {
+    color: #bbb;
+    font-size: 12px;
+    line-height: 1.8;
+  }
+
+  .footer-links-title {
+    color: rgba(0,0,0,0.5);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+    font-family: system-ui, -apple-system, sans-serif;
+  }
+  .footer-links ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .footer-links a {
+    color: rgba(0,0,0,0.6);
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: system-ui, -apple-system, sans-serif;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover {
+    color: #111;
+  }
+
+  .footer-bottom {
+    margin-top: 3rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #f0f0f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .footer-bottom p {
+    color: #ccc;
+    font-size: 11px;
+    letter-spacing: 1px;
+  }
+
+  @media (max-width: 600px) {
+    .footer-top {
+      flex-direction: column;
+    }
+  }
+</style>

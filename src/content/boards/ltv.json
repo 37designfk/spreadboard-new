@@ -1,0 +1,19 @@
+{
+  "name": "LTV",
+  "series": "LT",
+  "quality": ["反発性", "正確性", "操作性"],
+  "design": "SVC",
+  "flex": 3,
+  "description": "キャンバーベースによる反発力と確かなエッジグリップにより、高いターン性能を確保しつつ、センターフレックスをソフトに設定することで足元の自在性を向上させたモデル。今年からは新たに可変キャンバー構造を採用し、従来のシャープな操作性を残しながらも、状況に応じてしなやかな変化が加わり、より幅広い動きを受け止められるよう進化している。反発力を活かしたオーリーパワーと繊細なコントロール性を両立するバランス設計はそのままに、滑りの幅を広げる可変機構がプラスされることで、低速から高速、地形遊びまで扱いやすさが一段と向上した。",
+  "topImage": "/boards/ltv-top.jpg",
+  "baseImage": "/boards/ltv-base.jpg",
+  "sortOrder": 8,
+  "sizes": [
+    { "size": 148, "waistWidth": 243, "effectiveEdge": 1160, "runningLength": 1120, "sidecutRadius": 8050, "stanceWidth": 520, "noseTailWidth": 282, "stanceLocation": 0 },
+    { "size": 145, "waistWidth": 241, "effectiveEdge": 1130, "runningLength": 1090, "sidecutRadius": 7825, "stanceWidth": 500, "noseTailWidth": 279, "stanceLocation": 0 },
+    { "size": 143, "waistWidth": 240, "effectiveEdge": 1110, "runningLength": 1070, "sidecutRadius": 7747, "stanceWidth": 480, "noseTailWidth": 277, "stanceLocation": 0 },
+    { "size": 141, "waistWidth": 240, "effectiveEdge": 1100, "runningLength": 1060, "sidecutRadius": 7748, "stanceWidth": 480, "noseTailWidth": 276, "stanceLocation": 0 },
+    { "size": 139, "waistWidth": 239, "effectiveEdge": 1080, "runningLength": 1040, "sidecutRadius": 7520, "stanceWidth": 470, "noseTailWidth": 275, "stanceLocation": 0 },
+    { "size": 136, "waistWidth": 238, "effectiveEdge": 1070, "runningLength": 1030, "sidecutRadius": 7376, "stanceWidth": 460, "noseTailWidth": 275, "stanceLocation": 0 }
+  ]
+}

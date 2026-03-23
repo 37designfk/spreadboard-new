@@ -1,0 +1,17 @@
+{
+  "name": "LTA-F",
+  "series": "LT",
+  "quality": ["操作性", "正確性", "軽量性"],
+  "design": "CAMBER",
+  "flex": 2,
+  "description": "センターフレックスをやや柔らかく、キャンバー高さを控えめに設定することで、キャンバーボード特有の反発力と安定感をそのまま活かしつつ、より扱いやすい自在性を引き出したモデル。このバランス設計により、エッジの切り替えが素早く繊細な動きにも滑らかに反応する高い操作性を実現。ミドルソフトのフレックスは、強めの荷重にも素直についてくるため、ハードなトリックであってもストレスなく踏み込むことができる。ボード本来の性能を損なわず、自由度とコントロール性を両立させた万能な一本に仕上がっている。",
+  "topImage": "/boards/lta-f-top.jpg",
+  "baseImage": "/boards/lta-f-base.jpg",
+  "sortOrder": 1,
+  "sizes": [
+    { "size": 156, "waistWidth": 252, "effectiveEdge": 1240, "runningLength": 1180, "sidecutRadius": 8600, "stanceWidth": 580, "noseTailWidth": 292, "stanceLocation": 0 },
+    { "size": 153, "waistWidth": 250, "effectiveEdge": 1190, "runningLength": 1150, "sidecutRadius": 8000, "stanceWidth": 540, "noseTailWidth": 290, "stanceLocation": 0 },
+    { "size": 151, "waistWidth": 248, "effectiveEdge": 1170, "runningLength": 1120, "sidecutRadius": 8000, "stanceWidth": 540, "noseTailWidth": 288, "stanceLocation": 0 },
+    { "size": 148, "waistWidth": 247, "effectiveEdge": 1130, "runningLength": 1080, "sidecutRadius": 7900, "stanceWidth": 520, "noseTailWidth": 286, "stanceLocation": 0 }
+  ]
+}

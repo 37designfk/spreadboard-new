@@ -1,0 +1,19 @@
+{
+  "name": "LTY",
+  "series": "LT",
+  "quality": ["反発性", "正確性", "操作性"],
+  "design": "SVC",
+  "flex": 3,
+  "description": "今年から新たに可変キャンバー構造を採用したことでキャンバーベース特有の反発力とエッジグリップを維持しながら、状況に応じてしなやかに形状が変化し、より高い自在性を発揮するモデルへと進化した。これによりターン性能をしっかり確保しつつ、細かなコントロールも行いやすく、扱いやすさがさらに向上している。さらに、ミディアムフレックスながらノーズ・テールには適度な張りを持たせ、高速域でも挙動が安定し、ラインを正確に描けるライドフィールを獲得。スピードを出したカービングからトリックの切り替えまでスムーズに行え、斬新な板によってより多彩なスタイルを支えられる一本となっている。",
+  "topImage": "/boards/lty-top.jpg",
+  "baseImage": "/boards/lty-base.jpg",
+  "sortOrder": 7,
+  "sizes": [
+    { "size": 148, "waistWidth": 243, "effectiveEdge": 1160, "runningLength": 1120, "sidecutRadius": 8050, "stanceWidth": 520, "noseTailWidth": 279, "stanceLocation": 0 },
+    { "size": 145, "waistWidth": 241, "effectiveEdge": 1130, "runningLength": 1090, "sidecutRadius": 7825, "stanceWidth": 500, "noseTailWidth": 279, "stanceLocation": 0 },
+    { "size": 143, "waistWidth": 240, "effectiveEdge": 1110, "runningLength": 1070, "sidecutRadius": 7747, "stanceWidth": 480, "noseTailWidth": 277, "stanceLocation": 0 },
+    { "size": 141, "waistWidth": 240, "effectiveEdge": 1100, "runningLength": 1060, "sidecutRadius": 7748, "stanceWidth": 480, "noseTailWidth": 276, "stanceLocation": 0 },
+    { "size": 139, "waistWidth": 239, "effectiveEdge": 1080, "runningLength": 1040, "sidecutRadius": 7520, "stanceWidth": 470, "noseTailWidth": 275, "stanceLocation": 0 },
+    { "size": 136, "waistWidth": 238, "effectiveEdge": 1070, "runningLength": 1030, "sidecutRadius": 7376, "stanceWidth": 460, "noseTailWidth": 275, "stanceLocation": 0 }
+  ]
+}

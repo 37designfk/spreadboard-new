@@ -1,0 +1,19 @@
+{
+  "name": "BX",
+  "series": "X",
+  "quality": ["安定性", "操作性"],
+  "design": "SVC",
+  "flex": 3,
+  "description": "LTBをベースに有効エッジを延長し、フレックスバランスを最適化することで、ターン時の安定性とエッジグリップを高め、より正確でキレのあるコントロール性能を実現したモデル。加えて、スピン動作に必要な立ち上がりが軽く、回転への入りがスムーズになるよう設計されトリック全般における回しやすさを大きく向上させている。さらに、驚異的なスウィングウェイトの軽量化によってボードの振り替えや切り返しが軽快になり、素早い動作に対する追従性が向上。従来モデルのフィーリングを残しながら、より表現の幅を広げられる扱いやすさを獲得した。",
+  "topImage": "/boards/bx-top.jpg",
+  "baseImage": "/boards/bx-base.jpg",
+  "sortOrder": 4,
+  "sizes": [
+    { "size": 156, "waistWidth": 249, "effectiveEdge": 1240, "runningLength": 1200, "sidecutRadius": 8383, "stanceWidth": 580, "noseTailWidth": 292, "stanceLocation": 0 },
+    { "size": 154, "waistWidth": 247, "effectiveEdge": 1220, "runningLength": 1180, "sidecutRadius": 8299, "stanceWidth": 560, "noseTailWidth": 289, "stanceLocation": 0 },
+    { "size": 152, "waistWidth": 246, "effectiveEdge": 1200, "runningLength": 1160, "sidecutRadius": 8215, "stanceWidth": 540, "noseTailWidth": 287, "stanceLocation": 0 },
+    { "size": 150, "waistWidth": 245, "effectiveEdge": 1190, "runningLength": 1140, "sidecutRadius": 8133, "stanceWidth": 530, "noseTailWidth": 285, "stanceLocation": 0 },
+    { "size": 148, "waistWidth": 243, "effectiveEdge": 1160, "runningLength": 1120, "sidecutRadius": 8050, "stanceWidth": 520, "noseTailWidth": 282, "stanceLocation": 0 },
+    { "size": 145, "waistWidth": 242, "effectiveEdge": 1150, "runningLength": 1090, "sidecutRadius": 8051, "stanceWidth": 510, "noseTailWidth": 281, "stanceLocation": 0 }
+  ]
+}

@@ -1,0 +1,460 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getCollection, getEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+  const boards = await getCollection('boards');
+  return boards.map(board => ({
+    params: { slug: board.id },
+  }));
+}
+
+const { slug } = Astro.params;
+const board = await getEntry('boards', slug);
+
+if (!board) {
+  return Astro.redirect('/boards');
+}
+
+const { data } = board;
+const flexLabel = ['', 'SOFT', 'SOFT-MED', 'MEDIUM', 'MED-HARD', 'HARD'][data.flex];
+
+const allBoards = await getCollection('boards');
+const related = allBoards
+  .filter(b => b.data.series === data.series && b.id !== board.id)
+  .sort((a, b) => a.data.sortOrder - b.data.sortOrder)
+  .slice(0, 3);
+---
+
+<Layout
+  lang="ja" pagePath={`/boards/${slug}`} title={data.name}
+  description={`SPREAD SNOWBOARDS ${data.name}。${data.quality.join('/')}。${data.design}。`}
+>
+  <article class="detail">
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+      <a href="/">HOME</a>
+      <span>/</span>
+      <a href="/boards">BOARDS</a>
+      <span>/</span>
+      <span class="current">{data.name}</span>
+    </div>
+
+    <!-- Main -->
+    <div class="detail-grid">
+      <!-- Images -->
+      <div class="detail-images">
+        <div class="img-panel">
+          {data.topImage && (
+            <img src={data.topImage} alt={`${data.name} top`} />
+          )}
+          <span class="img-label">TOP</span>
+        </div>
+        <div class="img-panel img-panel--base">
+          {data.baseImage && (
+            <img src={data.baseImage} alt={`${data.name} base`} />
+          )}
+          <span class="img-label">BASE</span>
+        </div>
+      </div>
+
+      <!-- Info -->
+      <div class="detail-info">
+        <div class="info-head">
+          <p class="info-series">{data.series} SERIES</p>
+          <h1 class="info-name">{data.name}</h1>
+          {data.designedBy && (
+            <p class="info-designer">Designed by {data.designedBy}</p>
+          )}
+        </div>
+
+        <div class="info-block">
+          <p class="info-label">Quality</p>
+          <div class="quality-list">
+            {data.quality.map(q => (
+              <span class="quality-item">{q}</span>
+            ))}
+          </div>
+        </div>
+
+        <div class="info-block">
+          <p class="info-label">Performance</p>
+          <p class="info-desc">{data.description}</p>
+        </div>
+
+        <div class="info-row">
+          <div>
+            <p class="info-label">Flex</p>
+            <div class="flex-bar-lg">
+              {Array.from({ length: 5 }, (_, i) => (
+                <div class:list={['flex-seg', i < data.flex && 'active']} />
+              ))}
+            </div>
+            <p class="flex-text">{flexLabel}</p>
+          </div>
+          <div>
+            <p class="info-label">Design</p>
+            <p class="design-text">{data.design}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Size Chart -->
+    <div class="size-section">
+      <h2 class="size-title">Board Size</h2>
+      <div class="size-table-wrap">
+        <table class="size-table">
+          <thead>
+            <tr>
+              {['SIZE', 'WAIST WIDTH', 'EFFECTIVE EDGE', 'RUNNING LENGTH', 'SIDECUT RADIUS', 'STANCE WIDTH', 'NOSE/TAIL WIDTH', 'STANCE LOC.'].map(h => (
+                <th>{h}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {data.sizes.map(size => (
+              <tr>
+                <td class="size-val">{size.size}{size.suffix || ''}</td>
+                <td>{size.waistWidth}</td>
+                <td>{size.effectiveEdge}</td>
+                <td>{size.runningLength}</td>
+                <td>{size.sidecutRadius}</td>
+                <td>{size.stanceWidth}</td>
+                <td>{size.noseTailWidth}</td>
+                <td>{size.stanceLocation}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Related -->
+    {related.length > 0 && (
+      <div class="related-section">
+        <h2 class="related-title">{data.series} SERIES — Other Models</h2>
+        <div class="related-grid">
+          {related.map(b => (
+            <a href={`/boards/${b.id}`} class="related-card">
+              <p class="related-series">{b.data.series}</p>
+              <p class="related-name">{b.data.name}</p>
+              <p class="related-design">{b.data.design}</p>
+            </a>
+          ))}
+        </div>
+      </div>
+    )}
+
+    <!-- Nav -->
+    <div class="nav-back">
+      <a href="/boards" class="back-link">
+        <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+          <path d="M12 7H2M6 3L2 7L6 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>ALL BOARDS</span>
+      </a>
+    </div>
+  </article>
+</Layout>
+
+<style>
+  .detail {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+  }
+
+  .breadcrumb {
+    padding: 1.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.5);
+  }
+  .breadcrumb a {
+    color: rgba(0,0,0,0.5);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .breadcrumb a:hover { color: #111; }
+  .breadcrumb .current { color: rgba(0,0,0,0.6); }
+
+  .detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    padding-bottom: 4rem;
+  }
+  .detail-images {
+    display: flex;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+  .img-panel {
+    flex: 1;
+    max-width: 200px;
+    background: linear-gradient(to bottom, #f3f3f3, #fafafa);
+    border: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem 0;
+    min-height: 500px;
+    position: relative;
+  }
+  .img-panel--base {
+    background: linear-gradient(to bottom, #fafafa, #fff);
+  }
+  .img-panel img {
+    height: 100%;
+    max-height: 460px;
+    width: auto;
+    object-fit: contain;
+  }
+  .img-label {
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: rgba(0,0,0,0.15);
+    text-transform: uppercase;
+  }
+
+  .detail-info {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .info-series {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: rgba(0,0,0,0.5);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .info-name {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: clamp(36px, 5vw, 52px);
+    font-weight: 900;
+    font-style: italic;
+    letter-spacing: 2px;
+    color: #111;
+    margin-bottom: 0.5rem;
+  }
+  .info-designer {
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: rgba(0,0,0,0.5);
+    text-transform: uppercase;
+  }
+
+  .info-block {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .info-label {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    color: rgba(0,0,0,0.5);
+    text-transform: uppercase;
+  }
+  .quality-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+  .quality-item {
+    border: 1px solid rgba(0,0,0,0.15);
+    color: rgba(0,0,0,0.6);
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 6px 12px;
+  }
+  .info-desc {
+    font-size: 13px;
+    color: rgba(0,0,0,0.55);
+    line-height: 2;
+    text-align: justify;
+  }
+
+  .info-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+  .flex-bar-lg {
+    display: flex;
+    gap: 3px;
+    margin-bottom: 6px;
+  }
+  .flex-seg {
+    height: 4px;
+    flex: 1;
+    background: rgba(0,0,0,0.08);
+  }
+  .flex-seg.active {
+    background: #cc0000;
+  }
+  .flex-text {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: rgba(0,0,0,0.6);
+    text-transform: uppercase;
+  }
+  .design-text {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 2px;
+    color: rgba(0,0,0,0.6);
+    text-transform: uppercase;
+  }
+
+  /* Size */
+  .size-section {
+    border-top: 1px solid rgba(0,0,0,0.05);
+    padding: 4rem 0;
+  }
+  .size-title {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: rgba(0,0,0,0.5);
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 2rem;
+  }
+  .size-table-wrap {
+    overflow-x: auto;
+  }
+  .size-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12px;
+  }
+  .size-table th {
+    text-align: left;
+    padding: 0.75rem 1rem 0.75rem 0;
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: rgba(0,0,0,0.5);
+    text-transform: uppercase;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(0,0,0,0.1);
+    white-space: nowrap;
+  }
+  .size-table td {
+    padding: 0.75rem 1rem 0.75rem 0;
+    color: rgba(0,0,0,0.5);
+    border-bottom: 1px solid rgba(0,0,0,0.04);
+  }
+  .size-table tr:hover td {
+    background: rgba(248,248,248,0.8);
+  }
+  .size-val {
+    font-weight: 700;
+    color: #111 !important;
+  }
+
+  /* Related */
+  .related-section {
+    border-top: 1px solid rgba(0,0,0,0.05);
+    padding: 4rem 0;
+  }
+  .related-title {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    color: rgba(0,0,0,0.5);
+    text-transform: uppercase;
+    font-weight: 500;
+    margin-bottom: 2rem;
+  }
+  .related-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.75rem;
+  }
+  .related-card {
+    border: 1px solid rgba(0,0,0,0.05);
+    padding: 1.5rem;
+    text-decoration: none;
+    background: rgba(248,248,248,0.5);
+    transition: border-color 0.2s;
+  }
+  .related-card:hover {
+    border-color: rgba(0,0,0,0.5);
+  }
+  .related-series {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: rgba(0,0,0,0.5);
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .related-name {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    font-style: italic;
+    letter-spacing: 2px;
+    color: #111;
+    transition: color 0.2s;
+  }
+  .related-card:hover .related-name {
+    color: #cc0000;
+  }
+  .related-design {
+    font-size: 11px;
+    color: rgba(0,0,0,0.5);
+    margin-top: 0.5rem;
+  }
+
+  /* Nav */
+  .nav-back {
+    padding: 2rem 0 4rem;
+    text-align: center;
+  }
+  .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(0,0,0,0.6);
+    text-decoration: none;
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .back-link:hover { color: #111; }
+
+  @media (max-width: 768px) {
+    .detail-grid {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+    .detail-images {
+      max-width: 360px;
+      margin: 0 auto;
+    }
+    .related-grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+</style>

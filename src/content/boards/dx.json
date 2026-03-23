@@ -1,0 +1,22 @@
+{
+  "name": "DX",
+  "series": "DX",
+  "quality": ["軽量性", "操作性"],
+  "design": "W CAMBER",
+  "flex": 2,
+  "description": "SPREADらしい軽量性と操作性に、ダブルキャンバー特有のしなやかさを融合。センター部分の反発とエッジグリップを残しつつ、ノーズ・テールのロッカーがルーズさと自在性をプラス。低速でも扱いやすく、スウィングウェイトの軽減でスピン性能も向上。プレスやバターでの板さばきが格段にしやすく、安定した操作性を維持しながらトリック性能を高めたモデルです。軽快なスタイルを求めるライダーに最適。",
+  "topImage": "/boards/dx-top.jpg",
+  "baseImage": "/boards/dx-base.jpg",
+  "sortOrder": 6,
+  "sizes": [
+    { "size": 154, "waistWidth": 247, "effectiveEdge": 1220, "runningLength": 1150, "sidecutRadius": 8275, "stanceWidth": 560, "noseTailWidth": 289, "stanceLocation": 0 },
+    { "size": 152, "waistWidth": 246, "effectiveEdge": 1200, "runningLength": 1130, "sidecutRadius": 7990, "stanceWidth": 540, "noseTailWidth": 287, "stanceLocation": 0 },
+    { "size": 150, "waistWidth": 245, "effectiveEdge": 1180, "runningLength": 1120, "sidecutRadius": 7850, "stanceWidth": 520, "noseTailWidth": 285, "stanceLocation": 0 },
+    { "size": 148, "waistWidth": 243, "effectiveEdge": 1160, "runningLength": 1100, "sidecutRadius": 7572, "stanceWidth": 520, "noseTailWidth": 282, "stanceLocation": 0 },
+    { "size": 145, "waistWidth": 238, "effectiveEdge": 1080, "runningLength": 1080, "sidecutRadius": 7299, "stanceWidth": 500, "noseTailWidth": 278, "stanceLocation": 0 },
+    { "size": 142, "waistWidth": 236, "effectiveEdge": 1050, "runningLength": 1050, "sidecutRadius": 6900, "stanceWidth": 480, "noseTailWidth": 276, "stanceLocation": 0 },
+    { "size": 140, "waistWidth": 234, "effectiveEdge": 1040, "runningLength": 1040, "sidecutRadius": 6769, "stanceWidth": 460, "noseTailWidth": 274, "stanceLocation": 0 },
+    { "size": 138, "waistWidth": 233, "effectiveEdge": 1020, "runningLength": 1020, "sidecutRadius": 6512, "stanceWidth": 460, "noseTailWidth": 273, "stanceLocation": 0 },
+    { "size": 136, "waistWidth": 232, "effectiveEdge": 1010, "runningLength": 1010, "sidecutRadius": 6385, "stanceWidth": 440, "noseTailWidth": 272, "stanceLocation": 0 }
+  ]
+}

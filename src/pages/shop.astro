@@ -1,0 +1,219 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const shops = [
+  { name: 'モリヤマスポーツ', url: 'http://morispo.co.jp/' },
+  { name: "follow's", url: 'https://www.follows.co.jp/' },
+  { name: 'FLEA boardshop', url: 'http://flea.jp/' },
+  { name: 'APORITO', url: 'https://aporito-online.com/' },
+  { name: 'SOCIETY01', url: 'http://www.a-secret-society.com/' },
+  { name: 'SLASH', url: 'http://www1.megaegg.ne.jp/~slash/' },
+  { name: 'amp', url: 'http://www.amp8.co.jp/' },
+  { name: "See's", url: 'https://www.rakuten.co.jp/seeslife/' },
+  { name: 'VOLTAGE', url: 'https://www.voltagesnowboard.com/' },
+  { name: 'Dreamy', url: 'http://www.dreamy1117.com/' },
+  { name: 'MISTY', url: 'http://www.misty-snow.com/' },
+  { name: 'Sidestance', url: 'https://www.sidestance.net/' },
+  { name: 'Rampjack', url: 'https://www.taiyosp.co.jp/rampjack' },
+  { name: 'BREAK OUT', url: 'http://www.breakout-jp.com/' },
+  { name: '熊屋', url: 'https://ameblo.jp/lm066765/' },
+  { name: 'SPORTS BOMBER', url: 'https://sportsbomber.base.shop/' },
+  { name: 'SLIDE LINE', url: 'http://slideline.net/' },
+  { name: 'SHIFT', url: 'http://www.shift-tuning.com/' },
+  { name: 'スポタカ', url: 'https://spotaka.co.jp/' },
+  { name: 'Carnival', url: 'https://store.shopping.yahoo.co.jp/carnival-fujisi/' },
+  { name: 'EXTREME', url: 'http://www.extreme-jp.net/index.htm' },
+  { name: 'Mallard', url: 'https://mallard.jp/' },
+  { name: 'FOREST Snowboard Shop', url: 'http://forest-snowboard.com/' },
+  { name: "InD's", url: 'http://inds.mens-product.com/' },
+  { name: '日和 Sunshine Hakuba', url: '' },
+  { name: 'スポーツデポ', url: '' },
+  { name: 'FEELS', url: 'https://feelssnow.com/' },
+];
+---
+
+<Layout lang="ja" pagePath="/shop" title="SHOP" description="SPREAD SNOWBOARDS 取扱店舗一覧">
+
+  <section class="hero">
+    <div class="hero-inner">
+      <p class="hero-label">AUTHORIZED DEALERS</p>
+      <h1 class="hero-title">SHOP</h1>
+      <div class="hero-line"></div>
+      <p class="hero-sub">取扱店舗</p>
+    </div>
+  </section>
+
+  <section class="shop-section">
+    <div class="shop-list">
+      {shops.map((shop, i) => {
+        const hasUrl = shop.url && shop.url !== '';
+        const Tag = hasUrl ? 'a' : 'div';
+        return (
+          <a href={hasUrl ? shop.url : undefined} target={hasUrl ? '_blank' : undefined} rel={hasUrl ? 'noopener noreferrer' : undefined} class:list={['shop-card', !hasUrl && 'shop-card--nolink']} style={`--delay: ${i * 0.05}s`}>
+            <div class="shop-info">
+              <div class="shop-number">{String(i + 1).padStart(2, '0')}</div>
+              <h3 class="shop-name">{shop.name}</h3>
+            </div>
+            {hasUrl && (
+              <svg class="shop-arrow" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M7 17L17 7M17 7H7M17 7v10"/>
+              </svg>
+            )}
+          </a>
+        );
+      })}
+    </div>
+  </section>
+
+  <section class="cta-section">
+    <p class="cta-text">取扱店舗のお問い合わせ・新規お取引のご相談</p>
+    <a href="/contact" class="cta-btn">CONTACT</a>
+  </section>
+
+</Layout>
+
+<style>
+  .hero {
+    background: #fafafa;
+    padding: 5rem 1.5rem 3.5rem;
+    text-align: center;
+    border-bottom: 1px solid #ebebeb;
+  }
+  .hero-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .hero-label {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 10px;
+    letter-spacing: 6px;
+    color: #bbb;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .hero-title {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: clamp(36px, 8vw, 56px);
+    font-weight: 900;
+    font-style: italic;
+    color: #111;
+    letter-spacing: 12px;
+    margin-bottom: 1.5rem;
+  }
+  .hero-line {
+    width: 36px;
+    height: 2px;
+    background: #cc0000;
+    margin: 0 auto 1rem;
+  }
+  .hero-sub {
+    font-size: 12px;
+    letter-spacing: 4px;
+    color: #bbb;
+  }
+
+  .shop-section {
+    padding: 0 1.5rem 4rem;
+  }
+  .shop-list {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .shop-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.3rem 1rem;
+    border-bottom: 1px solid #f0f0f0;
+    text-decoration: none;
+    color: #111;
+    transition: background 0.3s;
+    animation: fadeUp 0.5s ease both;
+    animation-delay: var(--delay);
+  }
+  .shop-card:first-child {
+    border-top: 1px solid #f0f0f0;
+  }
+  .shop-card:hover {
+    background: #fafafa;
+  }
+  .shop-info {
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+  }
+  .shop-number {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 11px;
+    color: #ddd;
+    letter-spacing: 2px;
+    min-width: 24px;
+    font-variant-numeric: tabular-nums;
+  }
+  .shop-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #111;
+    letter-spacing: 0.5px;
+    transition: color 0.3s;
+  }
+  .shop-card:hover .shop-name {
+    color: #cc0000;
+  }
+  .shop-card--nolink {
+    cursor: default;
+  }
+  .shop-card--nolink:hover {
+    background: transparent;
+  }
+  .shop-card--nolink:hover .shop-name {
+    color: #111;
+  }
+  .shop-arrow {
+    color: #ddd;
+    transition: color 0.3s, transform 0.3s;
+  }
+  .shop-card:hover .shop-arrow {
+    color: #cc0000;
+    transform: translate(2px, -2px);
+  }
+
+  .cta-section {
+    background: #fafafa;
+    text-align: center;
+    padding: 3rem 1.5rem 5rem;
+    border-top: 1px solid #ebebeb;
+  }
+  .cta-text {
+    font-size: 13px;
+    color: #999;
+    letter-spacing: 1px;
+    margin-bottom: 1.5rem;
+  }
+  .cta-btn {
+    display: inline-block;
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 4px;
+    color: #cc0000;
+    border: 1px solid #cc0000;
+    padding: 12px 40px;
+    text-decoration: none;
+    transition: background 0.3s, color 0.3s;
+  }
+  .cta-btn:hover {
+    background: #cc0000;
+    color: #fff;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  @media (max-width: 600px) {
+    .shop-card { padding: 1.2rem 0.5rem; }
+    .shop-number { display: none; }
+  }
+</style>

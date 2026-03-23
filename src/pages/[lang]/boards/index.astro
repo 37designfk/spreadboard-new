@@ -1,0 +1,119 @@
+---
+import Layout from '../../../layouts/Layout.astro';
+import { getCollection } from 'astro:content';
+import { foreignLangs, type Lang } from '../../../i18n/config';
+import { t } from '../../../i18n/utils';
+
+export function getStaticPaths() {
+  return foreignLangs.map(lang => ({ params: { lang } }));
+}
+
+const lang = Astro.params.lang as Lang;
+const allBoards = await getCollection('boards');
+const sorted = allBoards.sort((a, b) => a.data.sortOrder - b.data.sortOrder);
+
+const seriesOrder = ['LT', 'X', 'DX', 'ZERO', 'RD'];
+const seriesLabels: Record<string, string> = { 'LT': 'LT SERIES', 'X': 'X SERIES', 'DX': 'DX', 'ZERO': 'ZERO', 'RD': 'RD SERIES' };
+const seriesIds: Record<string, string> = { 'LT': 'lt', 'X': 'x', 'DX': 'special', 'ZERO': 'special', 'RD': 'rd' };
+
+const grouped = seriesOrder.map(series => ({
+  series, label: seriesLabels[series], id: seriesIds[series],
+  boards: sorted.filter(b => b.data.series === series),
+})).filter(g => g.boards.length > 0);
+---
+
+<Layout lang={lang} pagePath="/boards" title="BOARDS 2026/27" description={`SPREAD SNOWBOARDS 2026/27 - ${allBoards.length} ${t(lang, 'boards_count')}`}>
+
+  <section class="page-header">
+    <div class="page-header-inner">
+      <p class="page-label">{t(lang, 'boards_label')}</p>
+      <h1 class="page-title">BOARDS</h1>
+      <p class="page-count">{allBoards.length} {t(lang, 'boards_count')}</p>
+    </div>
+  </section>
+
+  {grouped.map(({ label, id, boards }) => (
+    <section class="series-section" id={id}>
+      <div class="series-inner">
+        <div class="series-header">
+          <h2 class="series-label">{label}</h2>
+          <div class="series-line"></div>
+          <span class="series-count">{boards.length} models</span>
+        </div>
+        <div class="board-grid">
+          {boards.map(board => (
+            <a href={`/${lang}/boards/${board.id}`} class="board-card">
+              <div class="board-img-wrap">
+                {board.data.topImage && <img src={board.data.topImage} alt={board.data.name} loading="lazy" />}
+                <span class="board-series-badge">{board.data.series}</span>
+              </div>
+              <div class="board-info">
+                <h3 class="board-name">{board.data.name}</h3>
+                <div class="board-qualities">
+                  {board.data.quality.map(q => <span class="quality-tag">{q}</span>)}
+                </div>
+                <div class="board-meta">
+                  <span>{board.data.design}</span>
+                  <div class="flex-bar">
+                    {Array.from({ length: 5 }, (_, i) => <div class:list={['flex-dot', i < board.data.flex && 'active']} />)}
+                  </div>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <div class="pdf-section">
+    <a href="/SPREAD_CATALOG2026JP.pdf" target="_blank" class="pdf-link">
+      <div>
+        <p class="pdf-label">CATALOG PDF</p>
+        <p class="pdf-title">SPREAD SNOWBOARDS 2026/27</p>
+      </div>
+      <svg width="18" height="18" viewBox="0 0 18 18" fill="none" class="pdf-icon">
+        <path d="M9 2V12M5 8L9 12L13 8M2 15H16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+  </div>
+</Layout>
+
+<style>
+  .page-header { border-bottom: 1px solid #ebebeb; padding: 3rem 1.5rem 2rem; }
+  .page-header-inner { max-width: 1200px; margin: 0 auto; }
+  .page-label { font-family: system-ui, -apple-system, sans-serif; font-size: 10px; letter-spacing: 4px; color: #cc0000; text-transform: uppercase; margin-bottom: 0.75rem; }
+  .page-title { font-family: system-ui, -apple-system, sans-serif; font-size: clamp(32px, 5vw, 48px); font-weight: 900; font-style: italic; letter-spacing: 2px; color: #111; }
+  .page-count { font-size: 12px; color: rgba(0,0,0,0.5); margin-top: 0.5rem; }
+  .series-section { padding: 4rem 1.5rem; }
+  .series-inner { max-width: 1200px; margin: 0 auto; }
+  .series-header { display: flex; align-items: center; gap: 1rem; margin-bottom: 2.5rem; }
+  .series-label { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; letter-spacing: 4px; color: rgba(0,0,0,0.5); text-transform: uppercase; font-weight: 500; white-space: nowrap; }
+  .series-line { flex: 1; height: 1px; background: rgba(0,0,0,0.05); }
+  .series-count { font-family: system-ui, -apple-system, sans-serif; font-size: 11px; color: rgba(0,0,0,0.5); white-space: nowrap; }
+  .board-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 1px; background: #e8e8e8; }
+  .board-card { background: #fff; text-decoration: none; transition: box-shadow 0.3s; }
+  .board-card:hover { box-shadow: inset 0 0 0 2px #cc0000; }
+  .board-img-wrap { position: relative; aspect-ratio: 1 / 2.2; background: linear-gradient(to bottom, #f5f5f5, #fafafa); display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .board-img-wrap img { height: 88%; width: auto; object-fit: contain; transition: transform 0.5s; }
+  .board-card:hover .board-img-wrap img { transform: scale(1.04); }
+  .board-series-badge { position: absolute; top: 10px; left: 10px; font-family: system-ui, -apple-system, sans-serif; font-size: 9px; letter-spacing: 2px; color: rgba(0,0,0,0.5); text-transform: uppercase; background: rgba(255,255,255,0.85); padding: 3px 8px; }
+  .board-info { padding: 1.25rem; }
+  .board-name { font-family: system-ui, -apple-system, sans-serif; font-size: 16px; font-weight: 700; letter-spacing: 3px; color: #111; text-transform: uppercase; margin-bottom: 0.75rem; transition: color 0.2s; }
+  .board-card:hover .board-name { color: #cc0000; }
+  .board-qualities { display: flex; flex-wrap: wrap; gap: 4px; margin-bottom: 0.75rem; }
+  .quality-tag { font-size: 9px; letter-spacing: 1px; color: rgba(0,0,0,0.6); border: 1px solid rgba(0,0,0,0.1); padding: 2px 6px; }
+  .board-meta { display: flex; align-items: center; justify-content: space-between; font-family: system-ui, -apple-system, sans-serif; font-size: 10px; color: rgba(0,0,0,0.5); letter-spacing: 2px; text-transform: uppercase; }
+  .flex-bar { display: flex; gap: 3px; }
+  .flex-dot { width: 14px; height: 3px; background: rgba(0,0,0,0.08); }
+  .flex-dot.active { background: #cc0000; }
+  .pdf-section { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem 4rem; }
+  .pdf-link { display: flex; align-items: center; justify-content: space-between; border: 1px solid rgba(0,0,0,0.08); padding: 1.5rem; text-decoration: none; background: rgba(248,248,248,0.5); transition: border-color 0.2s; }
+  .pdf-link:hover { border-color: rgba(0,0,0,0.5); }
+  .pdf-label { font-family: system-ui, -apple-system, sans-serif; font-size: 10px; letter-spacing: 2px; color: rgba(0,0,0,0.5); text-transform: uppercase; margin-bottom: 0.25rem; }
+  .pdf-title { font-size: 14px; font-weight: 500; color: #111; transition: color 0.2s; }
+  .pdf-link:hover .pdf-title { color: #cc0000; }
+  .pdf-icon { color: rgba(0,0,0,0.5); transition: color 0.2s; flex-shrink: 0; }
+  .pdf-link:hover .pdf-icon { color: #111; }
+  @media (max-width: 600px) { .board-grid { grid-template-columns: repeat(2, 1fr); } }
+</style>

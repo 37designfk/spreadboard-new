@@ -1,0 +1,54 @@
+---
+import { languages, defaultLang, type Lang } from '../i18n/config';
+
+interface Props {
+  lang?: Lang;
+  pagePath?: string;
+}
+
+const { lang = 'ja', pagePath = '/' } = Astro.props;
+---
+
+<div class="lang-tabs">
+  {(Object.keys(languages) as Lang[]).map(l => {
+    const href = l === defaultLang
+      ? pagePath
+      : `/${l}${pagePath === '/' ? '' : pagePath}`;
+    return (
+      <a href={href} class:list={['lang-tab', l === lang && 'active']}>
+        {languages[l].label}
+      </a>
+    );
+  })}
+</div>
+
+<style>
+  .lang-tabs {
+    display: flex;
+    border: 1px solid #e0e0e0;
+    border-radius: 0;
+    overflow: hidden;
+  }
+  .lang-tab {
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 10px;
+    letter-spacing: 0.5px;
+    color: rgba(0,0,0,0.45);
+    text-decoration: none;
+    padding: 5px 10px;
+    border-right: 1px solid #e0e0e0;
+    transition: background 0.2s, color 0.2s;
+    white-space: nowrap;
+  }
+  .lang-tab:last-child {
+    border-right: none;
+  }
+  .lang-tab:hover {
+    background: #f5f5f5;
+    color: #111;
+  }
+  .lang-tab.active {
+    background: #111;
+    color: #fff;
+  }
+</style>

@@ -1,0 +1,19 @@
+{
+  "name": "AX-F",
+  "series": "X",
+  "quality": ["操作性", "正確性", "軽量性"],
+  "design": "CAMBER",
+  "flex": 3,
+  "description": "LTA-Fをベースに有効エッジを延長し、フレックスバランスを丁寧に調整したことで、ターン時の安定感とエッジの噛みを大きく向上させたモデル。トリックにおいてはスピンの導入がよりスムーズになり回転動作に必要な初動の軽くスムーズになるため、多方向への動きに対して素直に反応し、精度の高いトリックを可能にする。また、驚異的なスウィングウェイトの軽量化を実現したことで、従来のキレのある特性を維持しながら縦・横・回転といった多彩な動きに対応できる自由度が大幅に向上。扱いやすさとキレのある操作性を兼ね備え、トリックとターンのどちらもレベルアップさせたいライダーに最適な一本となっている。",
+  "topImage": "/boards/ax-f-top.jpg",
+  "baseImage": "/boards/ax-f-base.jpg",
+  "sortOrder": 2,
+  "sizes": [
+    { "size": 156, "waistWidth": 249, "effectiveEdge": 1240, "runningLength": 1200, "sidecutRadius": 8383, "stanceWidth": 580, "noseTailWidth": 292, "stanceLocation": 0 },
+    { "size": 154, "waistWidth": 247, "effectiveEdge": 1220, "runningLength": 1180, "sidecutRadius": 8299, "stanceWidth": 560, "noseTailWidth": 289, "stanceLocation": 0 },
+    { "size": 152, "waistWidth": 246, "effectiveEdge": 1200, "runningLength": 1160, "sidecutRadius": 8215, "stanceWidth": 540, "noseTailWidth": 287, "stanceLocation": 0 },
+    { "size": 150, "waistWidth": 245, "effectiveEdge": 1190, "runningLength": 1140, "sidecutRadius": 8133, "stanceWidth": 530, "noseTailWidth": 285, "stanceLocation": 0 },
+    { "size": 148, "waistWidth": 243, "effectiveEdge": 1160, "runningLength": 1120, "sidecutRadius": 8050, "stanceWidth": 520, "noseTailWidth": 282, "stanceLocation": 0 },
+    { "size": 145, "waistWidth": 242, "effectiveEdge": 1150, "runningLength": 1090, "sidecutRadius": 8051, "stanceWidth": 510, "noseTailWidth": 281, "stanceLocation": 0 }
+  ]
+}

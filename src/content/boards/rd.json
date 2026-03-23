@@ -1,0 +1,28 @@
+{
+  "name": "RD",
+  "series": "RD",
+  "quality": ["反発性", "正確性", "操作性", "滑走性"],
+  "design": "CAMBER",
+  "flex": 4,
+  "description": "SPREADのアーキテクトを務める菅谷佑之介が監修するトリックとカービングに特化したシリーズ【RD】。対極するふたつのスタイルを高次元で両立するため全長に対する有効エッジ率81%という数値をラウンド形状に落とし込んだ。雪面に接するエッジ距離を極まで有効エッジへ寄せることで、ターン・トリック双方における俊敏な控えを実現している。今年は新たに(S)スーパーワイドモデルを追加。ワイド化による高い面圧と安定性を、RDらしい操作性を損なうことなくまとめ上げ、深いバンク角でもエッジが失速せず、推進力を使ったまま描ききるカービング性能を獲得した。ワイドボード特有の鈍さを排除し、「幅が広いからこそ可能になるカービング領域」を精密に設計したモデルである。",
+  "designedBy": "菅谷佑之介",
+  "topImage": "/boards/rd-top.jpg",
+  "baseImage": "/boards/rd-base.jpg",
+  "sortOrder": 10,
+  "sizes": [
+    { "size": 163, "suffix": "S", "waistWidth": 290, "effectiveEdge": 1320, "runningLength": 1250, "sidecutRadius": 9087, "stanceWidth": 580, "noseTailWidth": 333, "stanceLocation": 0 },
+    { "size": 160, "suffix": "S", "waistWidth": 285, "effectiveEdge": 1280, "runningLength": 1220, "sidecutRadius": 8279, "stanceWidth": 570, "noseTailWidth": 330, "stanceLocation": 0 },
+    { "size": 157, "suffix": "S", "waistWidth": 260, "effectiveEdge": 1265, "runningLength": 1190, "sidecutRadius": 7878, "stanceWidth": 560, "noseTailWidth": 325, "stanceLocation": 0 },
+    { "size": 154, "suffix": "S", "waistWidth": 275, "effectiveEdge": 1240, "runningLength": 1180, "sidecutRadius": 8500, "stanceWidth": 550, "noseTailWidth": 316, "stanceLocation": 0 },
+    { "size": 151, "suffix": "S", "waistWidth": 270, "effectiveEdge": 1220, "runningLength": 1150, "sidecutRadius": 8275, "stanceWidth": 540, "noseTailWidth": 310, "stanceLocation": 0 },
+    { "size": 162, "suffix": "W", "waistWidth": 264, "effectiveEdge": 1310, "runningLength": 1240, "sidecutRadius": 8940, "stanceWidth": 580, "noseTailWidth": 307, "stanceLocation": 0 },
+    { "size": 158, "suffix": "W", "waistWidth": 260, "effectiveEdge": 1270, "runningLength": 1200, "sidecutRadius": 8010, "stanceWidth": 560, "noseTailWidth": 305, "stanceLocation": 0 },
+    { "size": 154, "suffix": "W", "waistWidth": 258, "effectiveEdge": 1240, "runningLength": 1180, "sidecutRadius": 8500, "stanceWidth": 550, "noseTailWidth": 299, "stanceLocation": 0 },
+    { "size": 150, "suffix": "W", "waistWidth": 254, "effectiveEdge": 1210, "runningLength": 1140, "sidecutRadius": 8230, "stanceWidth": 530, "noseTailWidth": 293, "stanceLocation": 0 },
+    { "size": 154, "waistWidth": 252, "effectiveEdge": 1240, "runningLength": 1180, "sidecutRadius": 8500, "stanceWidth": 550, "noseTailWidth": 293, "stanceLocation": 0 },
+    { "size": 152, "waistWidth": 250, "effectiveEdge": 1230, "runningLength": 1160, "sidecutRadius": 8420, "stanceWidth": 540, "noseTailWidth": 290, "stanceLocation": 0 },
+    { "size": 150, "waistWidth": 248, "effectiveEdge": 1210, "runningLength": 1140, "sidecutRadius": 8130, "stanceWidth": 530, "noseTailWidth": 288, "stanceLocation": 0 },
+    { "size": 148, "waistWidth": 248, "effectiveEdge": 1200, "runningLength": 1120, "sidecutRadius": 8260, "stanceWidth": 520, "noseTailWidth": 286, "stanceLocation": 0 },
+    { "size": 145, "waistWidth": 247, "effectiveEdge": 1180, "runningLength": 1100, "sidecutRadius": 8184, "stanceWidth": 510, "noseTailWidth": 284, "stanceLocation": 0 }
+  ]
+}

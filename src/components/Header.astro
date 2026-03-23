@@ -1,0 +1,245 @@
+---
+import type { Lang } from '../i18n/config';
+import { t } from '../i18n/utils';
+import LanguageSwitcher from './LanguageSwitcher.astro';
+
+interface Props {
+  lang?: Lang;
+  pagePath?: string;
+}
+
+const { lang = 'ja', pagePath = '/' } = Astro.props;
+const lp = lang === 'ja' ? '' : `/${lang}`;
+
+const boardItems = [
+  { label: 'LT SERIES', href: `${lp}/boards#lt` },
+  { label: 'X SERIES', href: `${lp}/boards#x` },
+  { label: 'RD SERIES', href: `${lp}/boards#rd` },
+  { label: 'SPECIAL', href: `${lp}/boards#special` },
+];
+
+const navItems = [
+  { label: t(lang, 'nav_shop'), href: `${lp}/shop` },
+  { label: t(lang, 'nav_contact'), href: `${lp}/contact` },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="header-inner">
+
+    <a href={`${lp}/` || '/'} class="header-logo">
+      <img src="/images/logo-black.png" alt="SPREAD SNOWBOARDS" class="header-logo-img" />
+    </a>
+
+    <nav class="desktop-nav">
+      <div class="dropdown">
+        <a href={`${lp}/boards`} class="nav-link dropdown-trigger">
+          {t(lang, 'nav_boards')}
+          <svg width="9" height="5" viewBox="0 0 10 6" fill="none">
+            <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </a>
+        <div class="dropdown-menu">
+          {boardItems.map((item) => (
+            <a href={item.href} class="dropdown-item">{item.label}</a>
+          ))}
+        </div>
+      </div>
+
+      {navItems.map((item) => (
+        <a
+          href={item.href}
+          class={`nav-link ${currentPath.startsWith(item.href) ? 'active' : ''}`}
+        >
+          {item.label}
+        </a>
+      ))}
+
+      <LanguageSwitcher lang={lang} pagePath={pagePath} />
+    </nav>
+
+    <button id="menu-btn" class="menu-btn" aria-label={t(lang, 'menu_open')}>
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </div>
+
+  <div id="mobile-menu" class="mobile-menu">
+    <nav class="mobile-nav">
+      <a href={`${lp}/boards`} class="mobile-link mobile-link--main">{t(lang, 'nav_boards')}</a>
+      {boardItems.map((item) => (
+        <a href={item.href} class="mobile-link mobile-link--sub">{item.label}</a>
+      ))}
+      {navItems.map((item) => (
+        <a href={item.href} class="mobile-link mobile-link--main">{item.label}</a>
+      ))}
+      <div class="mobile-lang-switcher">
+        <LanguageSwitcher lang={lang} pagePath={pagePath} />
+      </div>
+    </nav>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    background: #ffffff;
+    border-bottom: 1px solid #e8e8e8;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  .header-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 68px;
+  }
+  .header-logo {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+  }
+  .header-logo-img {
+    height: 36px;
+    width: auto;
+  }
+
+  .desktop-nav {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+  .nav-link {
+    color: #111;
+    text-decoration: none;
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    transition: color 0.2s;
+  }
+  .nav-link:hover,
+  .nav-link.active {
+    color: #cc0000;
+  }
+
+  .dropdown {
+    position: relative;
+  }
+  .dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-top: 10px;
+    display: none;
+    min-width: 160px;
+  }
+  .dropdown:hover .dropdown-menu {
+    display: block;
+  }
+  .dropdown-item {
+    display: block;
+    padding: 10px 20px;
+    background: #fff;
+    color: #333;
+    text-decoration: none;
+    font-family: system-ui, -apple-system, sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    border: 1px solid #e8e8e8;
+    border-top: none;
+    transition: color 0.2s, background-color 0.2s;
+  }
+  .dropdown-item:first-child {
+    border-top: 1px solid #e8e8e8;
+  }
+  .dropdown-item:hover {
+    color: #cc0000;
+    background: #fdf5f5;
+  }
+
+  .menu-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+  }
+  .bar {
+    display: block;
+    width: 22px;
+    height: 1.5px;
+    background: #111;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+
+  .mobile-menu {
+    display: none;
+    background: #fff;
+    border-top: 1px solid #e8e8e8;
+  }
+  .mobile-nav {
+    padding: 0.5rem 1.5rem 1rem;
+    display: flex;
+    flex-direction: column;
+  }
+  .mobile-link {
+    text-decoration: none;
+    font-family: system-ui, -apple-system, sans-serif;
+    letter-spacing: 2px;
+    transition: color 0.2s;
+  }
+  .mobile-link--main {
+    color: #111;
+    font-size: 12px;
+    padding: 13px 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .mobile-link--sub {
+    color: #888;
+    font-size: 11px;
+    padding: 10px 0 10px 1.25rem;
+    border-bottom: 1px solid #f8f8f8;
+  }
+  .mobile-link:hover {
+    color: #cc0000;
+  }
+  .mobile-lang-switcher {
+    padding: 13px 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+
+  @media (max-width: 768px) {
+    .desktop-nav { display: none; }
+    .menu-btn { display: flex; }
+  }
+</style>
+
+<script>
+  const btn = document.getElementById('menu-btn');
+  const menu = document.getElementById('mobile-menu');
+  const bars = document.querySelectorAll('.bar') as NodeListOf<HTMLElement>;
+  let open = false;
+
+  btn?.addEventListener('click', () => {
+    open = !open;
+    if (menu) menu.style.display = open ? 'block' : 'none';
+    if (bars.length >= 3) {
+      bars[0].style.transform = open ? 'translateY(6.5px) rotate(45deg)' : '';
+      bars[1].style.opacity  = open ? '0' : '';
+      bars[2].style.transform = open ? 'translateY(-6.5px) rotate(-45deg)' : '';
+    }
+  });
+</script>
