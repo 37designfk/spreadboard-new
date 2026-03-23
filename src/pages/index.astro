@@ -15,12 +15,12 @@ const featured = allBoards
   <!-- Hero (Crooja-style 3-image gallery) -->
   <section class="hero">
     <div class="hero-gallery">
-      <div class="hero-img"><img src="/images/hero-1.jpg" alt="SPREAD rider" width="1024" height="1024" fetchpriority="high" /></div>
-      <div class="hero-img"><img src="/images/hero-2.jpg" alt="SPREAD rider" width="1024" height="1024" /></div>
-      <div class="hero-img"><img src="/images/hero-3.jpg" alt="SPREAD rider" width="1024" height="1024" /></div>
+      <div class="hero-img"><img src={`${b}/images/hero-1.jpg`} alt="SPREAD rider" width="1024" height="1024" fetchpriority="high" /></div>
+      <div class="hero-img"><img src={`${b}/images/hero-2.jpg`} alt="SPREAD rider" width="1024" height="1024" /></div>
+      <div class="hero-img"><img src={`${b}/images/hero-3.jpg`} alt="SPREAD rider" width="1024" height="1024" /></div>
     </div>
     <div class="hero-overlay">
-      <img src="/images/logo-white.png" alt="SPREAD SNOWBOARDS" class="hero-logo" />
+      <img src={`${b}/images/logo-white.png`} alt="SPREAD SNOWBOARDS" class="hero-logo" />
       <p class="hero-catch">Greatest snowboard made in Japan</p>
     </div>
   </section>
@@ -115,7 +115,7 @@ const featured = allBoards
           <a href={`${b}/boards/${board.id}`} class="board-card">
             <div class="board-img-wrap">
               {board.data.topImage && (
-                <img src={board.data.topImage} alt={board.data.name} loading="lazy" />
+                <img src={`${b}${board.data.topImage}`} alt={board.data.name} loading="lazy" />
               )}
               <span class="board-series">{board.data.series}</span>
             </div>

@@ -56,7 +56,7 @@ const grouped = seriesOrder.map(series => ({
             <a href={`${b}/boards/${board.id}`} class="board-card">
               <div class="board-img-wrap">
                 {board.data.topImage && (
-                  <img src={board.data.topImage} alt={board.data.name} loading="lazy" />
+                  <img src={`${b}${board.data.topImage}`} alt={board.data.name} loading="lazy" />
                 )}
                 <span class="board-series-badge">{board.data.series}</span>
               </div>

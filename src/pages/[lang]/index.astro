@@ -9,9 +9,10 @@ export function getStaticPaths() {
 }
 
 const lang = Astro.params.lang as Lang;
+const b = import.meta.env.BASE_URL.replace(/\/$/, "");
 const allBoards = await getCollection('boards');
 const featured = allBoards
-  .sort((a, b) => a.data.sortOrder - b.data.sortOrder)
+  .sort((x, y) => x.data.sortOrder - y.data.sortOrder)
   .slice(0, 4);
 ---
 
@@ -19,12 +20,12 @@ const featured = allBoards
 
   <section class="hero">
     <div class="hero-gallery">
-      <div class="hero-img"><img src="/images/hero-1.jpg" alt="SPREAD rider" width="1024" height="1024" fetchpriority="high" /></div>
-      <div class="hero-img"><img src="/images/hero-2.jpg" alt="SPREAD rider" width="1024" height="1024" /></div>
-      <div class="hero-img"><img src="/images/hero-3.jpg" alt="SPREAD rider" width="1024" height="1024" /></div>
+      <div class="hero-img"><img src={`${b}/images/hero-1.jpg`} alt="SPREAD rider" width="1024" height="1024" fetchpriority="high" /></div>
+      <div class="hero-img"><img src={`${b}/images/hero-2.jpg`} alt="SPREAD rider" width="1024" height="1024" /></div>
+      <div class="hero-img"><img src={`${b}/images/hero-3.jpg`} alt="SPREAD rider" width="1024" height="1024" /></div>
     </div>
     <div class="hero-overlay">
-      <img src="/images/logo-white.png" alt="SPREAD SNOWBOARDS" class="hero-logo" />
+      <img src={`${b}/images/logo-white.png`} alt="SPREAD SNOWBOARDS" class="hero-logo" />
       <p class="hero-catch">{t(lang, 'hero_catch')}</p>
     </div>
   </section>
@@ -109,7 +110,7 @@ const featured = allBoards
           <a href={`/${lang}/boards/${board.id}`} class="board-card">
             <div class="board-img-wrap">
               {board.data.topImage && (
-                <img src={board.data.topImage} alt={board.data.name} loading="lazy" />
+                <img src={`${b}${board.data.topImage}`} alt={board.data.name} loading="lazy" />
               )}
               <span class="board-series">{board.data.series}</span>
             </div>

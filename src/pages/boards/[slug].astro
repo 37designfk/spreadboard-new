@@ -46,13 +46,13 @@ const related = allBoards
       <div class="detail-images">
         <div class="img-panel">
           {data.topImage && (
-            <img src={data.topImage} alt={`${data.name} top`} />
+            <img src={`${import.meta.env.BASE_URL.replace(/\/$/, "")}${data.topImage}`} alt={`${data.name} top`} />
           )}
           <span class="img-label">TOP</span>
         </div>
         <div class="img-panel img-panel--base">
           {data.baseImage && (
-            <img src={data.baseImage} alt={`${data.name} base`} />
+            <img src={`${import.meta.env.BASE_URL.replace(/\/$/, "")}${data.baseImage}`} alt={`${data.name} base`} />
           )}
           <span class="img-label">BASE</span>
         </div>
