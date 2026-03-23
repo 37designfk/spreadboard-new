@@ -8,48 +8,78 @@ interface Props {
 
 const { lang = 'ja', pagePath = '/' } = Astro.props;
 const b = import.meta.env.BASE_URL.replace(/\/$/, '');
+
+const options = (Object.keys(languages) as Lang[]).map(l => ({
+  value: l === defaultLang
+    ? `${b}${pagePath}`
+    : `${b}/${l}${pagePath === '/' ? '' : pagePath}`,
+  label: languages[l].label,
+  selected: l === lang,
+}));
 ---
 
-<div class="lang-tabs">
-  {(Object.keys(languages) as Lang[]).map(l => {
-    const href = l === defaultLang
-      ? `${b}${pagePath}`
-      : `${b}/${l}${pagePath === '/' ? '' : pagePath}`;
-    return (
-      <a href={href} class:list={['lang-tab', l === lang && 'active']}>
-        {languages[l].label}
-      </a>
-    );
-  })}
+<div class="lang-select-wrap">
+  <svg class="lang-icon" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+    <circle cx="12" cy="12" r="10"/>
+    <ellipse cx="12" cy="12" rx="5" ry="10"/>
+    <path d="M2 12h20M3.5 7h17M3.5 17h17"/>
+  </svg>
+  <select class="lang-select" data-lang-switcher>
+    {options.map(opt => (
+      <option value={opt.value} selected={opt.selected}>{opt.label}</option>
+    ))}
+  </select>
+  <svg class="lang-chevron" width="10" height="6" viewBox="0 0 10 6" fill="none">
+    <path d="M1 1L5 5L9 1" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </svg>
 </div>
 
 <style>
-  .lang-tabs {
+  .lang-select-wrap {
+    position: relative;
     display: flex;
-    border: 1px solid #e0e0e0;
-    border-radius: 0;
-    overflow: hidden;
+    align-items: center;
+    gap: 6px;
+    border: 1px solid #ddd;
+    padding: 4px 8px;
+    cursor: pointer;
+    transition: border-color 0.2s;
   }
-  .lang-tab {
+  .lang-select-wrap:hover {
+    border-color: #999;
+  }
+  .lang-icon {
+    color: rgba(0,0,0,0.35);
+    flex-shrink: 0;
+  }
+  .lang-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background: transparent;
+    border: none;
     font-family: system-ui, -apple-system, sans-serif;
-    font-size: 10px;
+    font-size: 11px;
     letter-spacing: 0.5px;
-    color: rgba(0,0,0,0.45);
-    text-decoration: none;
-    padding: 5px 10px;
-    border-right: 1px solid #e0e0e0;
-    transition: background 0.2s, color 0.2s;
-    white-space: nowrap;
+    color: #333;
+    cursor: pointer;
+    padding-right: 14px;
+    outline: none;
   }
-  .lang-tab:last-child {
-    border-right: none;
-  }
-  .lang-tab:hover {
-    background: #f5f5f5;
-    color: #111;
-  }
-  .lang-tab.active {
-    background: #111;
-    color: #fff;
+  .lang-chevron {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(0,0,0,0.3);
+    pointer-events: none;
   }
 </style>
+
+<script>
+  document.querySelectorAll('[data-lang-switcher]').forEach(select => {
+    select.addEventListener('change', (e) => {
+      const target = e.target as HTMLSelectElement;
+      window.location.href = target.value;
+    });
+  });
+</script>
