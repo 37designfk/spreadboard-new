@@ -3,8 +3,9 @@ import Layout from '../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
 const allBoards = await getCollection('boards');
+const b = import.meta.env.BASE_URL.replace(/\/$/, '');
 const featured = allBoards
-  .sort((a, b) => a.data.sortOrder - b.data.sortOrder)
+  .sort((x, y) => x.data.sortOrder - y.data.sortOrder)
   .slice(0, 4);
 ---
 
@@ -30,13 +31,13 @@ const featured = allBoards
       <div class="sub-hero-text">
         <p class="hero-season">WINTER 2026 / 2027</p>
         <div class="hero-actions">
-          <a href="/boards" class="btn-primary">
+          <a href={`${b}/boards`} class="btn-primary">
             <span>BOARDS 2026/27</span>
             <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
               <path d="M2 7H12M8 3L12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </a>
-          <a href="/contact" class="btn-outline">CONTACT</a>
+          <a href={`${b}/contact`} class="btn-outline">CONTACT</a>
         </div>
       </div>
       <div class="hero-stats">
@@ -83,7 +84,7 @@ const featured = allBoards
           { series: 'RD SERIES', desc: 'カービング特化', models: 'RD / RD CV' },
           { series: 'SPECIAL', desc: 'スペシャルモデル', models: 'DX / ZERO' },
         ].map(({ series, desc, models }) => (
-          <a href="/boards" class="series-card">
+          <a href={`${b}/boards`} class="series-card">
             <p class="series-name">{series}</p>
             <p class="series-desc">{desc}</p>
             <p class="series-models">{models}</p>
@@ -101,7 +102,7 @@ const featured = allBoards
           <p class="sec-tag">LINEUP</p>
           <h2 class="featured-title">2026/27 BOARDS</h2>
         </div>
-        <a href="/boards" class="view-all">
+        <a href={`${b}/boards`} class="view-all">
           <span>ALL BOARDS</span>
           <svg width="12" height="12" viewBox="0 0 12 12" fill="none">
             <path d="M2 6H10M7 3L10 6L7 9" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
@@ -111,7 +112,7 @@ const featured = allBoards
 
       <div class="board-grid">
         {featured.map(board => (
-          <a href={`/boards/${board.id}`} class="board-card">
+          <a href={`${b}/boards/${board.id}`} class="board-card">
             <div class="board-img-wrap">
               {board.data.topImage && (
                 <img src={board.data.topImage} alt={board.data.name} loading="lazy" />
@@ -143,7 +144,7 @@ const featured = allBoards
         <p class="sec-tag">CATALOG</p>
         <h2 class="cta-title">2026/27 プロダクトカタログ</h2>
         <p class="cta-desc">全モデルの詳細スペックをPDFでダウンロード</p>
-        <a href="/SPREAD_CATALOG2026JP.pdf" target="_blank" class="btn-primary">
+        <a href={`${b}/SPREAD_CATALOG2026JP.pdf`} target="_blank" class="btn-primary">
           <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
             <path d="M7 1V9M4 6L7 9L10 6M2 11H12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
           </svg>

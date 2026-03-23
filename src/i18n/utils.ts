@@ -15,9 +15,11 @@ export function t(lang: Lang, key: string): string {
 }
 
 export function getAlternateUrls(pagePath: string): { lang: Lang; htmlLang: string; url: string }[] {
+  const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+  const site = import.meta.env.SITE?.replace(/\/$/, '') ?? 'https://spreadboard.net';
   return (Object.keys(languages) as Lang[]).map(lang => ({
     lang,
     htmlLang: languages[lang].htmlLang,
-    url: `https://spreadboard.net${lang === defaultLang ? '' : `/${lang}`}${pagePath === '/' ? '' : pagePath}`,
+    url: `${site}${base}${lang === defaultLang ? '' : `/${lang}`}${pagePath === '/' ? '' : pagePath}`,
   }));
 }

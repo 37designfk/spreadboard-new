@@ -8,6 +8,7 @@ interface Props {
 
 const { lang = 'ja' } = Astro.props;
 const year = new Date().getFullYear();
+const b = import.meta.env.BASE_URL.replace(/\/$/, '');
 const lp = lang === 'ja' ? '' : `/${lang}`;
 ---
 
@@ -15,7 +16,7 @@ const lp = lang === 'ja' ? '' : `/${lang}`;
   <div class="footer-inner">
     <div class="footer-top">
       <div class="footer-brand">
-        <a href={`${lp}/` || '/'} class="footer-logo">
+        <a href={`${b}${lp}/` || '/'} class="footer-logo">
           <img src="/images/logo-black.png" alt="SPREAD SNOWBOARDS" class="footer-logo-img" />
         </a>
         <p class="footer-desc">{t(lang, 'footer_desc')}</p>
@@ -24,10 +25,10 @@ const lp = lang === 'ja' ? '' : `/${lang}`;
       <div class="footer-links">
         <p class="footer-links-title">{t(lang, 'footer_nav')}</p>
         <ul>
-          <li><a href={`${lp}/` || '/'}>HOME</a></li>
-          <li><a href={`${lp}/boards`}>{t(lang, 'nav_boards')}</a></li>
-          <li><a href={`${lp}/shop`}>{t(lang, 'nav_shop')}</a></li>
-          <li><a href={`${lp}/contact`}>{t(lang, 'nav_contact')}</a></li>
+          <li><a href={`${b}${lp}/` || '/'}>HOME</a></li>
+          <li><a href={`${b}${lp}/boards`}>{t(lang, 'nav_boards')}</a></li>
+          <li><a href={`${b}${lp}/shop`}>{t(lang, 'nav_shop')}</a></li>
+          <li><a href={`${b}${lp}/contact`}>{t(lang, 'nav_contact')}</a></li>
         </ul>
       </div>
     </div>

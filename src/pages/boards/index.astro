@@ -3,6 +3,7 @@ import Layout from '../../layouts/Layout.astro';
 import { getCollection } from 'astro:content';
 
 const allBoards = await getCollection('boards');
+const b = import.meta.env.BASE_URL.replace(/\/$/, "");
 const sorted = allBoards.sort((a, b) => a.data.sortOrder - b.data.sortOrder);
 
 const seriesOrder = ['LT', 'X', 'DX', 'ZERO', 'RD'];
@@ -52,7 +53,7 @@ const grouped = seriesOrder.map(series => ({
 
         <div class="board-grid">
           {boards.map(board => (
-            <a href={`/boards/${board.id}`} class="board-card">
+            <a href={`${b}/boards/${board.id}`} class="board-card">
               <div class="board-img-wrap">
                 {board.data.topImage && (
                   <img src={board.data.topImage} alt={board.data.name} loading="lazy" />
@@ -84,7 +85,7 @@ const grouped = seriesOrder.map(series => ({
 
   <!-- PDF -->
   <div class="pdf-section">
-    <a href="/SPREAD_CATALOG2026JP.pdf" target="_blank" class="pdf-link">
+    <a href={`${b}/SPREAD_CATALOG2026JP.pdf`} target="_blank" class="pdf-link">
       <div>
         <p class="pdf-label">CATALOG PDF</p>
         <p class="pdf-title">SPREAD SNOWBOARDS 2026/27 プロダクトマニュアル</p>

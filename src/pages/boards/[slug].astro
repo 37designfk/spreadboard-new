@@ -136,7 +136,7 @@ const related = allBoards
         <h2 class="related-title">{data.series} SERIES — Other Models</h2>
         <div class="related-grid">
           {related.map(b => (
-            <a href={`/boards/${b.id}`} class="related-card">
+            <a href={`${import.meta.env.BASE_URL.replace(/\/$/, "")}/boards/${b.id}`} class="related-card">
               <p class="related-series">{b.data.series}</p>
               <p class="related-name">{b.data.name}</p>
               <p class="related-design">{b.data.design}</p>
