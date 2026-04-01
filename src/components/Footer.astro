@@ -30,6 +30,14 @@ const lp = lang === 'ja' ? '' : `/${lang}`;
           <li><a href={`${b}${lp}/shop`}>{t(lang, 'nav_shop')}</a></li>
           <li><a href={`${b}${lp}/contact`}>{t(lang, 'nav_contact')}</a></li>
         </ul>
+        <a href="https://www.instagram.com/spreadsnowboards/" target="_blank" rel="noopener noreferrer" class="footer-insta">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5"/>
+            <circle cx="12" cy="12" r="5"/>
+            <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
+          </svg>
+          Instagram
+        </a>
       </div>
     </div>
 
@@ -102,6 +110,22 @@ const lp = lang === 'ja' ? '' : `/${lang}`;
     transition: color 0.2s;
   }
   .footer-links a:hover {
+    color: #111;
+  }
+  .footer-insta {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: rgba(0,0,0,0.6);
+    text-decoration: none;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-family: system-ui, -apple-system, sans-serif;
+    transition: color 0.2s;
+    margin-top: 1rem;
+  }
+  .footer-insta:hover {
     color: #111;
   }
 

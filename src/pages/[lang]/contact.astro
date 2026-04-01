@@ -23,7 +23,7 @@ const b = import.meta.env.BASE_URL.replace(/\/$/, "");
   <div class="form-wrap">
     <p class="form-intro">{t(lang, 'contact_intro')}</p>
 
-    <form name="contact" method="POST" data-netlify="true" class="contact-form">
+    <form name="contact" method="POST" action="mailto:ken.furuta@37design.co.jp" enctype="text/plain" class="contact-form">
       <input type="hidden" name="form-name" value="contact" />
       <input type="hidden" name="lang" value={lang} />
 
