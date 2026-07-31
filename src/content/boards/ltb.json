@@ -5,8 +5,8 @@
   "design": "SVC",
   "flex": 3,
   "description": "可変キャンバーを採用することで、高い汎用性と順応性を備えたモデル。ノーズとテールにフラットゾーンを設けることで接雪が安定し、着地やプレスといった動作が行いやすく、多様なトリックをよりイージーに楽しめる設計となっている。センター部分のキャンバーによってオーリー時の反発力をしっかり確保しつつ、可変機構がもたらすスルーでなめやかなライドフィールが加わることで、扱いやすさと遊びやすさのバランスがさらに向上。整地・地形あらゆるスノーコンディションに柔軟に対応でき、幅広いスタイルに寄り添うオールラウンドな一本に仕上がっている。",
-  "topImage": "/boards/ltb-top.jpg",
-  "baseImage": "/boards/ltb-base.jpg",
+  "topImage": "/boards/ltb-top.webp",
+  "baseImage": "/boards/ltb-base.webp",
   "sortOrder": 3,
   "sizes": [
     { "size": 156, "waistWidth": 252, "effectiveEdge": 1240, "runningLength": 1180, "sidecutRadius": 8600, "stanceWidth": 580, "noseTailWidth": 292, "stanceLocation": 0 },

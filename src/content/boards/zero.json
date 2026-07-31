@@ -6,8 +6,8 @@
   "flex": 3,
   "description": "堀内礼監修モデル。LTA-Fをベースに有効エッジを延長し、フレックスバランスを最適化することで、トリックにおけるスピン性能をより高い次元へ引き上げたモデル。エッジの安定感が増し、回転の初動が軽くスムーズになるため、多方向への動きに対して素直に反応し、精度の高いトリックを可能にする。また、驚異的なスウィングウェイトの軽量化を達成したことで、振り回しや切り返しがより軽快になり、従来モデルが持つフィーリングを残しながら動きの幅を大きく拡張。グラトリから地形遊びまで、ライダーの表現力を最大限に引き出す仕上がりとなっている。",
   "designedBy": "堀内礼",
-  "topImage": "/boards/zero-top.jpg",
-  "baseImage": "/boards/zero-base.jpg",
+  "topImage": "/boards/zero-top.webp",
+  "baseImage": "/boards/zero-base.webp",
   "sortOrder": 9,
   "sizes": [
     { "size": 156, "waistWidth": 249, "effectiveEdge": 1240, "runningLength": 1200, "sidecutRadius": 8383, "stanceWidth": 580, "noseTailWidth": 292, "stanceLocation": 0 },

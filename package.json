@@ -6,9 +6,12 @@
     "dev": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "deploy": "astro build && rsync -rcz --exclude \".DS_Store\" dist/ xserver:~/spreadboard.net/public_html/",
+    "deploy:check": "astro build && rsync -rczn --itemize-changes dist/ xserver:~/spreadboard.net/public_html/"
   },
   "dependencies": {
+    "@astrojs/sitemap": "^3.7.2",
     "@tailwindcss/vite": "^4.2.1",
     "astro": "^5.17.1",
     "tailwindcss": "^4.2.1"

@@ -5,8 +5,8 @@
   "design": "W CAMBER",
   "flex": 2,
   "description": "SPREADらしい軽量性と操作性に、ダブルキャンバー特有のしなやかさを融合。センター部分の反発とエッジグリップを残しつつ、ノーズ・テールのロッカーがルーズさと自在性をプラス。低速でも扱いやすく、スウィングウェイトの軽減でスピン性能も向上。プレスやバターでの板さばきが格段にしやすく、安定した操作性を維持しながらトリック性能を高めたモデルです。軽快なスタイルを求めるライダーに最適。",
-  "topImage": "/boards/dx-top.jpg",
-  "baseImage": "/boards/dx-base.jpg",
+  "topImage": "/boards/dx-top.webp",
+  "baseImage": "/boards/dx-base.webp",
   "sortOrder": 6,
   "sizes": [
     { "size": 154, "waistWidth": 247, "effectiveEdge": 1220, "runningLength": 1150, "sidecutRadius": 8275, "stanceWidth": 560, "noseTailWidth": 289, "stanceLocation": 0 },

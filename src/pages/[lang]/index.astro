@@ -20,12 +20,12 @@ const featured = allBoards
 
   <section class="hero">
     <div class="hero-gallery">
-      <div class="hero-img"><img src={`${b}/images/hero-1.jpg`} alt="SPREAD rider" width="1024" height="1024" fetchpriority="high" /></div>
-      <div class="hero-img"><img src={`${b}/images/hero-2.jpg`} alt="SPREAD rider" width="1024" height="1024" /></div>
-      <div class="hero-img"><img src={`${b}/images/hero-3.jpg`} alt="SPREAD rider" width="1024" height="1024" /></div>
+      <div class="hero-img"><img src={`${b}/images/hero-1v2.webp`} alt="SPREAD rider" width="800" height="800" fetchpriority="high" decoding="async" /></div>
+      <div class="hero-img"><img src={`${b}/images/hero-2v2.webp`} alt="SPREAD rider" width="800" height="800" loading="lazy" decoding="async" /></div>
+      <div class="hero-img"><img src={`${b}/images/hero-3v2.webp`} alt="SPREAD rider" width="800" height="800" loading="lazy" decoding="async" /></div>
     </div>
     <div class="hero-overlay">
-      <img src={`${b}/images/logo-white.png`} alt="SPREAD SNOWBOARDS" class="hero-logo" />
+      <img src={`${b}/images/logo-whitev2.webp`} alt="SPREAD SNOWBOARDS" class="hero-logo" />
       <p class="hero-catch">{t(lang, 'hero_catch')}</p>
     </div>
   </section>
@@ -64,12 +64,14 @@ const featured = allBoards
       <div class="about-text">
         <p class="sec-tag">{t(lang, 'about_tag')}</p>
         <h2 class="about-title">
-          {t(lang, 'about_title')}
-          <span>{t(lang, 'about_subtitle')}</span>
+          {t(lang, 'about_title')}<span>{t(lang, 'about_subtitle')}</span>
         </h2>
         <div class="about-body">
           <p>{t(lang, 'about_p1')}</p>
           <p>{t(lang, 'about_p2')}</p>
+          <p>{t(lang, 'about_p3')}</p>
+          <p>{t(lang, 'about_p4')}</p>
+          <p>{t(lang, 'about_p5')}</p>
         </div>
       </div>
 
@@ -86,6 +88,23 @@ const featured = allBoards
             <p class="series-models">{models}</p>
           </a>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="cta board-finder">
+    <div class="cta-inner">
+      <div class="cta-gradient"></div>
+      <div class="cta-content">
+        <p class="sec-tag">{t(lang, 'finder_tag')}</p>
+        <h2 class="cta-title">{t(lang, 'finder_title')}</h2>
+        <p class="cta-desc">{t(lang, 'finder_desc')}</p>
+        <a href={t(lang, 'finder_url')} target="_blank" rel="noopener noreferrer" class="btn-primary">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 7H12M8 3L12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>{t(lang, 'finder_btn')}</span>
+        </a>
       </div>
     </div>
   </section>

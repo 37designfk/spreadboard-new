@@ -5,8 +5,8 @@
   "design": "SVC",
   "flex": 3,
   "description": "今年から新たに可変キャンバー構造を採用したことでキャンバーベース特有の反発力とエッジグリップを維持しながら、状況に応じてしなやかに形状が変化し、より高い自在性を発揮するモデルへと進化した。これによりターン性能をしっかり確保しつつ、細かなコントロールも行いやすく、扱いやすさがさらに向上している。さらに、ミディアムフレックスながらノーズ・テールには適度な張りを持たせ、高速域でも挙動が安定し、ラインを正確に描けるライドフィールを獲得。スピードを出したカービングからトリックの切り替えまでスムーズに行え、斬新な板によってより多彩なスタイルを支えられる一本となっている。",
-  "topImage": "/boards/lty-top.jpg",
-  "baseImage": "/boards/lty-base.jpg",
+  "topImage": "/boards/lty-top.webp",
+  "baseImage": "/boards/lty-base.webp",
   "sortOrder": 7,
   "sizes": [
     { "size": 148, "waistWidth": 243, "effectiveEdge": 1160, "runningLength": 1120, "sidecutRadius": 8050, "stanceWidth": 520, "noseTailWidth": 279, "stanceLocation": 0 },

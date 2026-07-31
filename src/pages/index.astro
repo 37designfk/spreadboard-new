@@ -9,7 +9,26 @@ const featured = allBoards
   .slice(0, 4);
 ---
 
-<Layout lang="ja" pagePath="/">
+<Layout lang="ja" pagePath="/" jsonLd={[
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "SPREAD SNOWBOARDS",
+    "url": "https://spreadboard.net",
+    "logo": "https://spreadboard.net/images/logo-blackv2.webp",
+    "foundingDate": "2017",
+    "description": "国産スノーボードブランド。アクトギア工場の技術力で作られた高性能スノーボード。",
+    "sameAs": [
+      "https://www.instagram.com/spread_snow/"
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "SPREAD SNOWBOARDS",
+    "url": "https://spreadboard.net"
+  }
+]}>
 
 <script define:vars={{ b }}>
   (function() {
@@ -33,12 +52,13 @@ const featured = allBoards
   <!-- Hero (Crooja-style 3-image gallery) -->
   <section class="hero">
     <div class="hero-gallery">
-      <div class="hero-img"><img src={`${b}/images/hero-1.jpg`} alt="SPREAD rider" width="1024" height="1024" fetchpriority="high" /></div>
-      <div class="hero-img"><img src={`${b}/images/hero-2.jpg`} alt="SPREAD rider" width="1024" height="1024" /></div>
-      <div class="hero-img"><img src={`${b}/images/hero-3.jpg`} alt="SPREAD rider" width="1024" height="1024" /></div>
+      <div class="hero-img"><img src={`${b}/images/hero-1v2.webp`} alt="SPREAD rider" width="800" height="800" fetchpriority="high" decoding="async" /></div>
+      <div class="hero-img"><img src={`${b}/images/hero-2v2.webp`} alt="SPREAD rider" width="800" height="800" loading="lazy" decoding="async" /></div>
+      <div class="hero-img"><img src={`${b}/images/hero-3v2.webp`} alt="SPREAD rider" width="800" height="800" loading="lazy" decoding="async" /></div>
     </div>
     <div class="hero-overlay">
-      <img src={`${b}/images/logo-white.png`} alt="SPREAD SNOWBOARDS" class="hero-logo" />
+      <h1 class="sr-only">SPREAD SNOWBOARDS - 国産スノーボードブランド</h1>
+      <img src={`${b}/images/logo-whitev2.webp`} alt="SPREAD SNOWBOARDS" class="hero-logo" />
       <p class="hero-catch">Greatest snowboard made in Japan</p>
     </div>
   </section>
@@ -79,19 +99,14 @@ const featured = allBoards
       <div class="about-text">
         <p class="sec-tag">ABOUT</p>
         <h2 class="about-title">
-          日本が誇る
-          <span>スノーボードメーカー</span>
+          設計で引き出す<span>コントロール性能</span>
         </h2>
         <div class="about-body">
-          <p>
-            SPREAD snowboardsは2017年に誕生しました。国産スノーボードを代表する
-            アクトギア工場の技術力と、ライダーのフィードバックを融合させた
-            高品質なボードを製作しています。
-          </p>
-          <p>
-            LTシリーズからRDシリーズまで、スタイルやライディングに合わせた
-            幅広いラインナップで、すべてのライダーの表現力を最大限に引き出します。
-          </p>
+          <p>SPREAD SNOWBOARDSは2017年に誕生。国内外のシーンで結果を残してきたライダー達の知見を集約し、アウトライン・フレックス・有効エッジといった設計要素を最適化。操作性と安定性を高いレベルで両立したスノーボードを開発しています。</p>
+          <p>その設計を支えるのは、世界トップレベルの技術力を持つ製造工場。設計意図を高精度で再現することで、理想とする性能をそのまま雪上で引き出します。</p>
+          <p>LTシリーズのオールラウンド性能、Xシリーズの次世代機、RDシリーズのトリックとカービングを両立する専用設計。</p>
+          <p>それぞれが明確な性能コンセプトを持ち、ライディングスタイルに応じた最適な選択が可能です。</p>
+          <p>SPREADは、フィーリングではなく設計によって性能を引き出し、あらゆる滑りに対して高いコントロール性能を提供します。</p>
         </div>
       </div>
 
@@ -108,6 +123,24 @@ const featured = allBoards
             <p class="series-models">{models}</p>
           </a>
         ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Board finder -->
+  <section class="cta board-finder">
+    <div class="cta-inner">
+      <div class="cta-gradient"></div>
+      <div class="cta-content">
+        <p class="sec-tag">BOARD FINDER</p>
+        <h2 class="cta-title">適正板診断</h2>
+        <p class="cta-desc">身長・体重・ライディングスタイルから、あなたに最適なボードを提案します。</p>
+        <a href="https://spreadboard.netlify.app/" target="_blank" rel="noopener noreferrer" class="btn-primary">
+          <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+            <path d="M2 7H12M8 3L12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>START DIAGNOSIS</span>
+        </a>
       </div>
     </div>
   </section>

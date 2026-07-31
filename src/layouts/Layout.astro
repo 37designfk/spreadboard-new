@@ -10,6 +10,8 @@ interface Props {
   description?: string;
   lang?: Lang;
   pagePath?: string;
+  ogImage?: string;
+  jsonLd?: Record<string, any> | Record<string, any>[];
 }
 
 const {
@@ -17,6 +19,8 @@ const {
   description = 'SPREAD SNOWBOARDS — 国産スノーボードブランド。2017年誕生、アクトギア工場の技術力で作られた高性能スノーボード。',
   lang = 'ja',
   pagePath = '/',
+  ogImage = '/images/hero-1v2.webp',
+  jsonLd,
 } = Astro.props;
 
 const alternateUrls = getAlternateUrls(pagePath);
@@ -30,17 +34,25 @@ const canonicalUrl = alternateUrls.find(a => a.lang === lang)?.url
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content={description} />
+    <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
     <link rel="canonical" href={canonicalUrl} />
     {alternateUrls.map(alt => (
       <link rel="alternate" hreflang={alt.htmlLang} href={alt.url} />
     ))}
     <link rel="alternate" hreflang="x-default" href={alternateUrls.find(a => a.lang === defaultLang)?.url} />
     <link rel="icon" type="image/png" href={`${import.meta.env.BASE_URL}favicon.png`} />
+    {pagePath === '/' && <link rel="preload" as="image" type="image/webp" href={`${import.meta.env.BASE_URL}images/hero-1v2.webp`} fetchpriority="high" />}
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonicalUrl} />
     <meta property="og:type" content="website" />
+    <meta property="og:image" content={new URL(ogImage, Astro.site)} />
+    <meta property="og:site_name" content="SPREAD SNOWBOARDS" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:image" content={new URL(ogImage, Astro.site)} />
+    {jsonLd && (
+      <script type="application/ld+json" set:html={JSON.stringify(Array.isArray(jsonLd) ? jsonLd : [jsonLd])} />
+    )}
     <title>{title === 'SPREAD SNOWBOARDS' ? title : `${title} | SPREAD SNOWBOARDS`}</title>
   </head>
   <body>
@@ -49,5 +61,12 @@ const canonicalUrl = alternateUrls.find(a => a.lang === lang)?.url
       <slot />
     </main>
     <Footer lang={lang} />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-PTBVHNGLBE" is:inline></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-PTBVHNGLBE');
+    </script>
   </body>
 </html>

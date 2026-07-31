@@ -5,8 +5,8 @@
   "design": "SVC",
   "flex": 3,
   "description": "LTBをベースに有効エッジを延長し、フレックスバランスを最適化することで、ターン時の安定性とエッジグリップを高め、より正確でキレのあるコントロール性能を実現したモデル。加えて、スピン動作に必要な立ち上がりが軽く、回転への入りがスムーズになるよう設計されトリック全般における回しやすさを大きく向上させている。さらに、驚異的なスウィングウェイトの軽量化によってボードの振り替えや切り返しが軽快になり、素早い動作に対する追従性が向上。従来モデルのフィーリングを残しながら、より表現の幅を広げられる扱いやすさを獲得した。",
-  "topImage": "/boards/bx-top.jpg",
-  "baseImage": "/boards/bx-base.jpg",
+  "topImage": "/boards/bx-top.webp",
+  "baseImage": "/boards/bx-base.webp",
   "sortOrder": 4,
   "sizes": [
     { "size": 156, "waistWidth": 249, "effectiveEdge": 1240, "runningLength": 1200, "sidecutRadius": 8383, "stanceWidth": 580, "noseTailWidth": 292, "stanceLocation": 0 },

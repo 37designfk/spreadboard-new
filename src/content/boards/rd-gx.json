@@ -7,8 +7,8 @@
   "description": "SPREADのアーキテクトを務める菅谷佑之介が監修するトリックとカービングに特化したシリーズ【RD】。対極するふたつのスタイルを高次元で両立するため全長に対する有効エッジ率81%という数値をラウンド形状に落とし込んだ。雪面に接するエッジ距離を極限まで有効エッジへ寄せることで、ターン・トリック双方における俊敏な捌えを実現している。今年は新たにRD GXが登場。従来モデルの構造を継承しながら、グラファイトソールを採用することで滑走性を一段と強化。雪質変化に左右されにくく、高い直進性と加速性能を発揮し、RDシリーズ特有の操作性とエッジコントロール性能をよりハイスピード域でも安定して引き出せるモデルとなった。",
   "designedBy": "菅谷佑之介",
   "sole": "Graphite Base",
-  "topImage": "/boards/rd-gx-top.jpg",
-  "baseImage": "/boards/rd-gx-base.jpg",
+  "topImage": "/boards/rd-gx-top.webp",
+  "baseImage": "/boards/rd-gx-base.webp",
   "sortOrder": 11,
   "sizes": [
     { "size": 163, "suffix": "S", "waistWidth": 290, "effectiveEdge": 1320, "runningLength": 1250, "sidecutRadius": 9087, "stanceWidth": 580, "noseTailWidth": 333, "stanceLocation": 0 },
@@ -19,6 +19,7 @@
     { "size": 162, "suffix": "W", "waistWidth": 264, "effectiveEdge": 1310, "runningLength": 1240, "sidecutRadius": 8940, "stanceWidth": 580, "noseTailWidth": 307, "stanceLocation": 0 },
     { "size": 158, "suffix": "W", "waistWidth": 260, "effectiveEdge": 1270, "runningLength": 1200, "sidecutRadius": 8010, "stanceWidth": 560, "noseTailWidth": 305, "stanceLocation": 0 },
     { "size": 154, "suffix": "W", "waistWidth": 258, "effectiveEdge": 1240, "runningLength": 1180, "sidecutRadius": 8220, "stanceWidth": 530, "noseTailWidth": 293, "stanceLocation": 0 },
+    { "size": 150, "suffix": "W", "waistWidth": 254, "effectiveEdge": 1210, "runningLength": 1140, "sidecutRadius": 8230, "stanceWidth": 530, "noseTailWidth": 293, "stanceLocation": 0 },
     { "size": 154, "waistWidth": 252, "effectiveEdge": 1240, "runningLength": 1180, "sidecutRadius": 8420, "stanceWidth": 540, "noseTailWidth": 290, "stanceLocation": 0 },
     { "size": 152, "waistWidth": 250, "effectiveEdge": 1230, "runningLength": 1160, "sidecutRadius": 8420, "stanceWidth": 540, "noseTailWidth": 290, "stanceLocation": 0 },
     { "size": 150, "waistWidth": 248, "effectiveEdge": 1210, "runningLength": 1140, "sidecutRadius": 8130, "stanceWidth": 530, "noseTailWidth": 288, "stanceLocation": 0 },
