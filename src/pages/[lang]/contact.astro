@@ -23,9 +23,11 @@ const b = import.meta.env.BASE_URL.replace(/\/$/, "");
   <div class="form-wrap">
     <p class="form-intro">{t(lang, 'contact_intro')}</p>
 
-    <form name="contact" method="POST" action="mailto:ken.furuta@37design.co.jp" enctype="text/plain" class="contact-form">
-      <input type="hidden" name="form-name" value="contact" />
+    <form id="contact-form" class="contact-form">
+      <input type="hidden" name="site_id" value="spreadboard" />
       <input type="hidden" name="lang" value={lang} />
+      <!-- ハニーポット。botが埋めると送信を黙って捨てる -->
+      <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="form-hp" />
 
       <div class="form-row">
         <div class="form-group">
@@ -60,9 +62,53 @@ const b = import.meta.env.BASE_URL.replace(/\/$/, "");
           <path d="M2 7H12M8 3L12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
+
+      <p class="form-status" id="contact-status" aria-live="polite"></p>
     </form>
   </div>
 </Layout>
+
+<script define:vars={{
+  msgSending: t(lang, 'form_sending'),
+  msgSuccess: t(lang, 'form_success'),
+  msgError: t(lang, 'form_error'),
+}}>
+  const form = document.getElementById('contact-form');
+  const status = document.getElementById('contact-status');
+  const button = form.querySelector('.form-submit');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    button.disabled = true;
+    status.className = 'form-status is-sending';
+    status.textContent = msgSending;
+
+    const fd = new FormData(form);
+    // 件名は value("product"等)ではなく画面に出ている当該言語のラベルを送る
+    const sel = form.querySelector('select[name="subject"]');
+    if (sel && sel.selectedIndex > 0) {
+      fd.set('subject', sel.options[sel.selectedIndex].text);
+    }
+
+    try {
+      const res = await fetch('https://forms.37d.jp/submit', { method: 'POST', body: fd });
+      const data = await res.json();
+      if (data.ok) {
+        status.className = 'form-status is-success';
+        status.textContent = msgSuccess;
+        form.reset();
+      } else {
+        status.className = 'form-status is-error';
+        status.textContent = msgError;
+      }
+    } catch {
+      status.className = 'form-status is-error';
+      status.textContent = msgError;
+    } finally {
+      button.disabled = false;
+    }
+  });
+</script>
 
 <style>
   .page-header { border-bottom: 1px solid #ebebeb; padding: 3rem 1.5rem 2rem; }
@@ -83,5 +129,12 @@ const b = import.meta.env.BASE_URL.replace(/\/$/, "");
   .form-textarea { resize: none; }
   .form-submit { display: inline-flex; align-items: center; gap: 10px; align-self: flex-start; background: #111; color: #fff; border: none; cursor: pointer; font-family: system-ui, -apple-system, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; padding: 13px 28px; transition: background 0.2s; }
   .form-submit:hover { background: #cc0000; }
+  .form-submit:disabled { background: rgba(0,0,0,0.3); cursor: default; }
+  /* ハニーポット。画面外に飛ばす。display:none だと埋めない bot がいる */
+  .form-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+  .form-status { font-size: 13px; line-height: 1.8; min-height: 1.8em; }
+  .form-status.is-sending { color: rgba(0,0,0,0.5); }
+  .form-status.is-success { color: #111; }
+  .form-status.is-error { color: #cc0000; }
   @media (max-width: 600px) { .form-row { grid-template-columns: 1fr; } }
 </style>

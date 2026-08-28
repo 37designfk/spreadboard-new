@@ -19,8 +19,10 @@ import Layout from '../layouts/Layout.astro';
       以下のフォームよりお気軽にご連絡ください。
     </p>
 
-    <form name="contact" method="POST" action="mailto:ken.furuta@37design.co.jp" enctype="text/plain" class="contact-form">
-      <input type="hidden" name="form-name" value="contact" />
+    <form id="contact-form" class="contact-form">
+      <input type="hidden" name="site_id" value="spreadboard" />
+      <!-- ハニーポット。botが埋めると送信を黙って捨てる -->
+      <input type="text" name="website" tabindex="-1" autocomplete="off" aria-hidden="true" class="form-hp" />
 
       <div class="form-row">
         <div class="form-group">
@@ -55,9 +57,56 @@ import Layout from '../layouts/Layout.astro';
           <path d="M2 7H12M8 3L12 7L8 11" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </button>
+
+      <p class="form-status" id="contact-status" aria-live="polite"></p>
     </form>
   </div>
 </Layout>
+
+<script>
+  const form = document.getElementById('contact-form') as HTMLFormElement;
+  const status = document.getElementById('contact-status') as HTMLElement;
+  const button = form.querySelector('.form-submit') as HTMLButtonElement;
+
+  const MSG = {
+    sending: '送信中...',
+    success: '送信しました。担当より追ってご連絡いたします。',
+    error: '送信に失敗しました。お手数ですが時間をおいて再度お試しください。',
+  };
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    button.disabled = true;
+    status.className = 'form-status is-sending';
+    status.textContent = MSG.sending;
+
+    const fd = new FormData(form);
+    // 件名は value("product"等)ではなく画面に出ている日本語ラベルを送る。
+    // 受信側は通知メールをそのまま読むだけで内容が分かる
+    const sel = form.querySelector('select[name="subject"]') as HTMLSelectElement | null;
+    if (sel && sel.selectedIndex > 0) {
+      fd.set('subject', sel.options[sel.selectedIndex].text);
+    }
+
+    try {
+      const res = await fetch('https://forms.37d.jp/submit', { method: 'POST', body: fd });
+      const data = await res.json();
+      if (data.ok) {
+        status.className = 'form-status is-success';
+        status.textContent = MSG.success;
+        form.reset();
+      } else {
+        status.className = 'form-status is-error';
+        status.textContent = MSG.error;
+      }
+    } catch {
+      status.className = 'form-status is-error';
+      status.textContent = MSG.error;
+    } finally {
+      button.disabled = false;
+    }
+  });
+</script>
 
 <style>
   .page-header {
@@ -166,6 +215,34 @@ import Layout from '../layouts/Layout.astro';
   }
   .form-submit:hover {
     background: #cc0000;
+  }
+  .form-submit:disabled {
+    background: rgba(0, 0, 0, 0.3);
+    cursor: default;
+  }
+
+  /* ハニーポット。画面外に飛ばす。display:none だと埋めない bot がいる */
+  .form-hp {
+    position: absolute;
+    left: -9999px;
+    width: 1px;
+    height: 1px;
+    opacity: 0;
+  }
+
+  .form-status {
+    font-size: 13px;
+    line-height: 1.8;
+    min-height: 1.8em;
+  }
+  .form-status.is-sending {
+    color: rgba(0, 0, 0, 0.5);
+  }
+  .form-status.is-success {
+    color: #111;
+  }
+  .form-status.is-error {
+    color: #cc0000;
   }
 
   @media (max-width: 600px) {
